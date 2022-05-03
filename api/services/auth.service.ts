@@ -1,8 +1,8 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 const secret = process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'secret';
 
-const _authService = () => {
+const authService = () => {
   const issue = (payload) => jwt.sign(payload, secret, { expiresIn: 10800 });
   const verify = (token, cb) => jwt.verify(token, secret, {}, cb);
 
@@ -12,4 +12,4 @@ const _authService = () => {
   };
 };
 
-module.exports = _authService;
+export default authService;

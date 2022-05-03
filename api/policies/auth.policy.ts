@@ -1,7 +1,7 @@
-const JWTService = require('../services/auth.service');
+import JWTService from '../services/auth.service';
 
 // usually: "Authorization: Bearer [token]" or "token: [token]"
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
   let tokenToVerify;
 
   if (req.header('Authorization')) {

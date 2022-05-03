@@ -1,6 +1,6 @@
-const database = require('../../config/database');
+import database from '../config/database';
 
-const _dbService = (environment, migrate) => {
+const dbService = (environment, migrate) => {
   const authenticateDB = () => database.authenticate();
 
   const dropDB = () => database.drop();
@@ -109,4 +109,4 @@ const _dbService = (environment, migrate) => {
   };
 };
 
-module.exports = _dbService;
+export default dbService;

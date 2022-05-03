@@ -1,19 +1,26 @@
 /**
  * third party libraries
  */
-const bodyParser = require('body-parser');
-const express = require('express');
-const helmet = require('helmet');
-const http = require('http');
-const mapRoutes = require('express-routes-mapper');
-const cors = require('cors');
+import bodyParser from 'body-parser';
+import express from 'express';
+import helmet from 'helmet';
+import http from 'http';
+import mapRoutes from './libs/express-routes-mapper';
+import cors from 'cors';
 
 /**
  * server configuration
  */
-const config = require('../config');
-const dbService = require('./services/db.service');
-const auth = require('./policies/auth.policy');
+import config from './config';
+import dbService from './services/db.service';
+import auth from './policies/auth.policy';
+
+declare const process: {
+  env: {
+    [key: string]: string;
+  },
+  exit: Function,
+};
 
 // environment: development, staging, testing, production
 const environment = process.env.NODE_ENV;
@@ -22,7 +29,7 @@ const environment = process.env.NODE_ENV;
  * express application
  */
 const app = express();
-const server = http.Server(app);
+const server = new http.Server(app);
 const mappedOpenRoutes = mapRoutes(config.publicRoutes, 'api/controllers/');
 const mappedAuthRoutes = mapRoutes(config.privateRoutes, 'api/controllers/');
 const DB = dbService(environment, config.migrate).start();

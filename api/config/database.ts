@@ -1,18 +1,24 @@
-const _Sequelize = require('sequelize');
-const path = require('path');
+import { Sequelize, Dialect } from 'sequelize';
+import path from 'path';
+import connection from './connection';
 
-const connection = require('./connection');
+declare const process: {
+  env: {
+    [key: string]: string;
+  },
+  cwd: Function,
+};
 
-let _database;
+let database;
 
 switch (process.env.NODE_ENV) {
   case 'production':
-    _database = new _Sequelize(
+    database = new Sequelize(
       connection.production.database,
       connection.production.username,
       connection.production.password, {
         host: connection.production.host,
-        dialect: connection.production.dialect,
+        dialect: connection.production.dialect as Dialect,
         pool: {
           max: 5,
           min: 0,
@@ -22,12 +28,12 @@ switch (process.env.NODE_ENV) {
     );
     break;
   case 'testing':
-    _database = new _Sequelize(
+    database = new Sequelize(
       connection.testing.database,
       connection.testing.username,
       connection.testing.password, {
         host: connection.testing.host,
-        dialect: connection.testing.dialect,
+        dialect: connection.testing.dialect as Dialect,
         pool: {
           max: 5,
           min: 0,
@@ -37,12 +43,12 @@ switch (process.env.NODE_ENV) {
     );
     break;
   default:
-    _database = new _Sequelize(
+    database = new Sequelize(
       connection.development.database,
       connection.development.username,
       connection.development.password, {
         host: connection.development.host,
-        dialect: connection.development.dialect,
+        dialect: connection.development.dialect as Dialect,
         pool: {
           max: 5,
           min: 0,
@@ -53,4 +59,4 @@ switch (process.env.NODE_ENV) {
     );
 }
 
-module.exports = _database;
+export default database;

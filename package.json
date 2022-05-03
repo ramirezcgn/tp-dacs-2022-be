@@ -1,25 +1,17 @@
 {
-  "name": "express-rest-api-boilerplate",
+  "name": "tp-dacs-2022-be",
   "version": "0.0.0",
-  "author": "Lukas Aichbauer <l.aichbauer@gmail.com>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aichbauer/express-rest-api-boilerplate.git"
-  },
-  "homepage": "https://github.com/aichbauer/express-rest-api-boilerplate#readme",
-  "bugs": {
-    "url": "https://github.com/aichbauer/express-rest-api-boilerplate/issues"
-  },
+  "type": "module",
   "scripts": {
     "prestart": "npm run drop-sqlite-db || true",
     "start": "npm run nodemon",
     "poststart": "npm run create-sqlite-db",
-    "dev": "cross-env NODE_ENV=development ts-node ./api/api.ts",
+    "dev": "cross-env NODE_ENV=development node --experimental-specifier-resolution=node --loader ts-node/esm ./api/api.ts",
     "nodemon": "nodemon --exec npm run dev",
     "create-sqlite-db": "shx touch ./db/database.sqlite",
     "drop-sqlite-db": "shx rm ./db/database.sqlite",
-    "lint": "eslint ./api/. ./config/. ./test/.",
+    "lint": "eslint ./api/. ./test/.",
     "prepush": "npm test",
     "pretest": "npm run lint",
     "production": "cross-env NODE_ENV=production node ./api/api.js",
@@ -40,7 +32,6 @@
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "express-routes-mapper": "^1.1.0",
     "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
     "sequelize": "^6.19.0",
@@ -54,7 +45,6 @@
     "@types/node": "^17.0.31",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
-    "core-js": "^2.6.12",
     "cross-env": "^7.0.3",
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",

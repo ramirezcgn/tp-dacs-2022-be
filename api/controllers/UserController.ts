@@ -1,6 +1,6 @@
-const User = require('../models/User');
-const authService = require('../services/auth.service');
-const __bcryptService = require('../services/bcrypt.service');
+import User from '../models/User';
+import authService from '../services/auth.service';
+import bcryptService from '../services/bcrypt.service';
 
 const UserController = () => {
   const register = async (req, res) => {
@@ -13,7 +13,6 @@ const UserController = () => {
           password: body.password,
         });
         const token = authService().issue({ id: user.id });
-
         return res.status(200).json({ token, user });
       } catch (err) {
         console.log(err);
@@ -40,7 +39,7 @@ const UserController = () => {
           return res.status(400).json({ msg: 'Bad Request: User not found' });
         }
 
-        if (__bcryptService().comparePassword(password, user.password)) {
+        if (bcryptService().comparePassword(password, user.password)) {
           const token = authService().issue({ id: user.id });
 
           return res.status(200).json({ token, user });
@@ -71,14 +70,12 @@ const UserController = () => {
   const getAll = async (req, res) => {
     try {
       const users = await User.findAll();
-
       return res.status(200).json({ users });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ msg: 'Internal server error' });
     }
   };
-
 
   return {
     register,
@@ -88,4 +85,4 @@ const UserController = () => {
   };
 };
 
-module.exports = UserController;
+export default UserController;

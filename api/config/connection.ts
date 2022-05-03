@@ -1,3 +1,9 @@
+declare const process: {
+  env: {
+    [key: string]: string;
+  },
+};
+
 const development = {
   database: 'databasename',
   username: 'username',
@@ -22,7 +28,7 @@ const production = {
   dialect: 'sqlite' || 'mysql' || 'postgres',
 };
 
-module.exports = {
+export default {
   development,
   testing,
   production,

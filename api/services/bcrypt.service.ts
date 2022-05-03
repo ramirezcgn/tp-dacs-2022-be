@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt-nodejs');
+import bcrypt from 'bcrypt-nodejs';
 
-const _bcryptService = () => {
+const bcryptService = () => {
   const password = (user) => {
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(user.password, salt);
@@ -18,4 +18,4 @@ const _bcryptService = () => {
   };
 };
 
-module.exports = _bcryptService;
+export default bcryptService;
