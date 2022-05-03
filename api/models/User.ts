@@ -11,7 +11,7 @@ const hooks = {
 
 const tableName = 'users';
 
-const User = sequelize.define('User', {
+const _User = sequelize.define('User', {
   email: {
     type: Sequelize.STRING,
     unique: true,
@@ -22,7 +22,7 @@ const User = sequelize.define('User', {
 }, { hooks, tableName });
 
 // eslint-disable-next-line
-User.prototype.toJSON = function () {
+_User.prototype.toJSON = function () {
   const values = Object.assign({}, this.get());
 
   delete values.password;
@@ -30,4 +30,4 @@ User.prototype.toJSON = function () {
   return values;
 };
 
-module.exports = User;
+module.exports = _User;

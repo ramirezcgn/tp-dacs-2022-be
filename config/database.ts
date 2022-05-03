@@ -1,13 +1,13 @@
-const Sequelize = require('sequelize');
+const _Sequelize = require('sequelize');
 const path = require('path');
 
 const connection = require('./connection');
 
-let database;
+let _database;
 
 switch (process.env.NODE_ENV) {
   case 'production':
-    database = new Sequelize(
+    _database = new _Sequelize(
       connection.production.database,
       connection.production.username,
       connection.production.password, {
@@ -22,7 +22,7 @@ switch (process.env.NODE_ENV) {
     );
     break;
   case 'testing':
-    database = new Sequelize(
+    _database = new _Sequelize(
       connection.testing.database,
       connection.testing.username,
       connection.testing.password, {
@@ -37,7 +37,7 @@ switch (process.env.NODE_ENV) {
     );
     break;
   default:
-    database = new Sequelize(
+    _database = new _Sequelize(
       connection.development.database,
       connection.development.username,
       connection.development.password, {
@@ -53,4 +53,4 @@ switch (process.env.NODE_ENV) {
     );
 }
 
-module.exports = database;
+module.exports = _database;
