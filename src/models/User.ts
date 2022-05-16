@@ -43,4 +43,22 @@ User.prototype.toJSON = function () {
   return values;
 };
 
+/*sequelize.afterSync((/*options* /) => {
+  User.bulkCreate(
+    [
+      {
+        name: 'admin',
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john-doe@admin.com',
+        password: 'password',
+      },
+    ],
+    {
+      fields: ['name', 'firstName', 'lastName', 'email', 'password'],
+      ignoreDuplicates: true,
+    },
+  );
+});*/
+
 export default User;

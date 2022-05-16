@@ -15,6 +15,7 @@ import mapRoutes from './libs/express-routes-mapper';
  * server configuration
  */
 import config from './config';
+import seeder from './config/seeds';
 import dbService from './services/db.service';
 import auth from './policies/auth.policy';
 
@@ -39,7 +40,7 @@ const server = new http.Server(app);
 const controllersPath = path.join(path.basename(__dirname), 'controllers');
 const mappedOpenRoutes = await mapRoutes(config.publicRoutes, controllersPath);
 const mappedAuthRoutes = await mapRoutes(config.privateRoutes, controllersPath);
-const DB = dbService(environment, config.migrate).start();
+const DB = dbService(environment, config.migrate, seeder).start();
 
 // allow cross origin requests
 // configure to only allow requests from certain origins

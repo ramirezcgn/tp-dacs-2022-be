@@ -1,6 +1,6 @@
 import database from '../config/database';
 
-const dbService = (environment, migrate) => {
+const dbService = (environment, migrate, seeder) => {
   const authenticateDB = () => database.authenticate();
 
   const dropDB = () => database.drop();
@@ -11,6 +11,10 @@ const dbService = (environment, migrate) => {
     console.info(
       'connection to the database has been established successfully',
     );
+
+    if (seeder) {
+      seeder();
+    }
   };
 
   const errorDBStart = (err) => {
