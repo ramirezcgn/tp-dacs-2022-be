@@ -14,12 +14,15 @@ export default class PostRepository implements Repository {
 
   create(data) {
     const user = User.findByPk(1);
-    return Post.create({
-      ...data,
-      user,
-    }, {
-      association: Post.User,
-    });
+    return Post.create(
+      {
+        ...data,
+        user,
+      },
+      {
+        association: Post.User,
+      },
+    );
   }
 
   update(id, data) {
