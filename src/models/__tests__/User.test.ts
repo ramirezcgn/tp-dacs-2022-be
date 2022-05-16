@@ -1,5 +1,5 @@
-import { beforeAction, afterAction } from '../setup/_setup';
-import User from '../../models/User';
+import { beforeAction, afterAction } from '../../tests';
+import User from '../User';
 
 let user;
 

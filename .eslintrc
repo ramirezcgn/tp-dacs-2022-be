@@ -34,10 +34,12 @@
     }
   },
   "rules": {
+    "no-console":"off",
     "arrow-parens": [
       "error",
       "always"
     ],
+    "spaced-comment": "off",
     "class-methods-use-this": "off",
     "linebreak-style": ["error", "windows"],
     "no-restricted-syntax": "off",

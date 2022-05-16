@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { beforeAction, afterAction } from '../setup/_setup';
+import { beforeAction, afterAction } from '../../tests';
 import User from '../../models/User';
 
 let api;

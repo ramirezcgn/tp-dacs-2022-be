@@ -2,6 +2,7 @@
 import express from 'express';
 import path from 'path';
 import url from 'url';
+import fs from 'fs';
 
 import splitByLastDot from './helpers/splitByLastDot';
 import isConstructor from './helpers/isConstrutor';
@@ -57,6 +58,10 @@ const mapRoutes = async (routes, pathToController, middlewareGenerals = []) => {
 
     try {
       const controllerPath = path.join(myPathToController, `${controller}.ts`);
+      if (!fs.existsSync(controllerPath)) {
+        console.log(`Error: File ${controllerPath} not found!`);
+        break;
+      }
       const { default: handler } = await import(
         url.pathToFileURL(controllerPath).toString()
       );

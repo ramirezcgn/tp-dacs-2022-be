@@ -1,15 +1,15 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 import path from 'path';
-import mapRoutes from '../../libs/express-routes-mapper';
+import mapRoutes from './libs/express-routes-mapper';
 
-import config from '../../config';
-import database from '../../config/database';
-import auth from '../../policies/auth.policy';
+import config from './config';
+import database from './config/database';
+import auth from './policies/auth.policy';
 
 export const beforeAction = async () => {
   const testapp = express();
-  const controllersPath = path.join('api', 'controllers');
+  const controllersPath = path.join('src', 'controllers');
   const mappedOpenRoutes = await mapRoutes(
     config.publicRoutes,
     controllersPath,
