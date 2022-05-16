@@ -1,6 +1,6 @@
 import { Sequelize, Dialect } from 'sequelize';
 import path from 'path';
-import connection from './connection';
+import connection from './connection.json';
 
 declare const process: {
   env: {
@@ -14,11 +14,11 @@ let database;
 switch (process.env.NODE_ENV) {
   case 'production':
     database = new Sequelize(
-      connection.production.database,
-      connection.production.username,
-      connection.production.password,
+      process.env.DB_NAME || connection.production.database,
+      process.env.DB_USER || connection.production.username,
+      process.env.DB_PASS || connection.production.password,
       {
-        host: connection.production.host,
+        host: process.env.DB_HOST || connection.production.host,
         dialect: connection.production.dialect as Dialect,
         pool: {
           max: 5,

@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
+import User from './User';
 
 const tableName = 'posts';
 
@@ -15,12 +16,12 @@ const Post = sequelize.define(
     date: {
       type: Sequelize.DATE,
     },
-    user_id: {
-      type: Sequelize.INTEGER,
-    },
   },
   { tableName },
 );
+
+User.hasMany(Post);
+Post.belongsTo(User);
 
 // eslint-disable-next-line
 Post.prototype.toJSON = function () {

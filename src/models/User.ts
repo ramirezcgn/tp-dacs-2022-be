@@ -13,6 +13,16 @@ const tableName = 'users';
 const User = sequelize.define(
   'User',
   {
+    name: {
+      type: Sequelize.STRING,
+      unique: true,
+    },
+    firstName: {
+      type: Sequelize.STRING,
+    },
+    lastName: {
+      type: Sequelize.STRING,
+    },
     email: {
       type: Sequelize.STRING,
       unique: true,
