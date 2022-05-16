@@ -76,6 +76,7 @@ server.listen(config.port, () => {
     );
     process.exit(1);
   }
-  console.log(`API Server is running at http://localhost:${config.port}`);
+  const url = `http://localhost:${config.port}`;
+  console.log(`\nAPI Server is running at: \x1b[32m${url}\x1b[0m\n`);
   return DB;
 });
