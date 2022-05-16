@@ -4,14 +4,14 @@ export default () =>
   Post.bulkCreate(
     [
       {
-        title: 'admin',
-        body: 'John',
-        date: 'Doe',
+        title: 'Post Title',
+        body: 'Post body',
+        date: Date.now(),
         UserId: 1,
       },
     ],
     {
-      fields: ['title', 'body', 'date'],
+      fields: ['title', 'body', 'date', 'UserId'],
       ignoreDuplicates: true,
     },
   );
