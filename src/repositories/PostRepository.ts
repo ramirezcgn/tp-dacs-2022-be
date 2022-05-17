@@ -1,6 +1,8 @@
+import dayjs from 'dayjs';
 import Repository from './Repository';
 import Post from '../models/Post';
 import User from '../models/User';
+import sequelize from '../config/database';
 
 export default class PostRepository implements Repository {
   get(id) {
@@ -10,6 +12,29 @@ export default class PostRepository implements Repository {
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   getAll(page: number, limit: number) {
     return Post.findAll({ include: User });
+  }
+
+  getInactiveUsers(days = 30) {
+    return User.findAll({
+      attributes: {
+        include: [
+          [
+            sequelize.literal(`(
+              SELECT p.UserId as id, MAX(p.createdAt) as date
+              FROM posts p
+              GROUP BY UserId
+            )`),
+            's',
+          ],
+        ],
+      },
+      where: {
+        id: sequelize.literal('s.UserId'),
+        's.date': {
+          $gte: dayjs().subtract(days, 'days').toDate(),
+        },
+      },
+    });
   }
 
   create(data) {

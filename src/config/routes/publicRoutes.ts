@@ -8,6 +8,7 @@ const publicRoutes = {
   'POST /post/': 'PostController.create',
   'PUT /post/:id': 'PostController.update',
   'DELETE /post/:id': 'PostController.destroy',
+  'POST /notifyUsers/': 'PostController.notifyUsers',
 };
 
 export default publicRoutes;

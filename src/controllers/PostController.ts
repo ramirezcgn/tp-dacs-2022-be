@@ -66,12 +66,26 @@ const PostController = () => {
     }
   };
 
+  const notifyUsers = async (req, res) => {
+    try {
+      const result = await postService().notifyInactiveUsers();
+      if (!result) {
+        return res.status(400).json({ msg: 'Bad Request: Email not sent' });
+      }
+      return res.status(200).json({ msg: 'Successfully email sent' });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
+
   return {
     getAll,
     get,
     update,
     create,
     destroy,
+    notifyUsers,
   };
 };
 
