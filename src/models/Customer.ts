@@ -1,9 +1,7 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
 
-
-
-const tableName = 'customer';
+const tableName = 'customers';
 
 const Customer = sequelize.define(
   'Customer',
@@ -19,9 +17,8 @@ const Customer = sequelize.define(
       type: Sequelize.STRING,
     },
     dateOfBirh: {
-        type: Sequelize.DATE,
-      },
-    
+      type: Sequelize.DATE,
+    },
   },
   {  tableName },
 );

@@ -1,9 +1,7 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
 
-
-
-const tableName = 'transport';
+const tableName = 'transports';
 
 const Transport = sequelize.define(
   'Transport',
@@ -15,9 +13,6 @@ const Transport = sequelize.define(
     date: {
       type: Sequelize.NUMBER,
     },
-    
-   
-    
   },
   {  tableName },
 );

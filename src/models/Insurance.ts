@@ -1,8 +1,7 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
 
-
-const tableName = 'insurance';
+const tableName = 'insurances';
 
 const Insurance = sequelize.define(
   'Insurance',
@@ -20,7 +19,6 @@ const Insurance = sequelize.define(
     price: {
       type: Sequelize.NUMBER,
     },
-    
   },
   {  tableName },
 );

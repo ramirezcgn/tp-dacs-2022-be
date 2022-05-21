@@ -1,14 +1,11 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
 
-
-
-const tableName = 'booking';
+const tableName = 'bookings';
 
 const Booking = sequelize.define(
   'Booking',
   {
-    
     amount: {
       name: Sequelize.NUMBER,
     },
@@ -16,9 +13,8 @@ const Booking = sequelize.define(
       type: Sequelize.DATE,
     },
     toDate: {
-        type: Sequelize.DATE,
-      },
-        
+      type: Sequelize.DATE,
+    },
   },
   {  tableName },
 );

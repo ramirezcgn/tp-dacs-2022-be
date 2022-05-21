@@ -1,20 +1,20 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
 
-const tableName = 'payments-plans';
+const tableName = 'shows';
 
-const PaymentPlan = sequelize.define(
-  'PaymentPlan',
+const Show = sequelize.define(
+  'Show',
   {
-    idPlan: {
+    idTicket: {
       type: Sequelize.NUMBER,
       unique: true,
     },
-    couteTotal: {
+    date: {
       type: Sequelize.DATE,
     },
   },
   {  tableName },
 );
 
-export default PaymentPlan;
+export default Show;

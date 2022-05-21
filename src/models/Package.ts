@@ -1,21 +1,23 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
 
-const tableName = 'policies';
+const tableName = 'packages';
 
-const Policy = sequelize.define(
-  'Policy',
+const Packages = sequelize.define(
+  'Packages',
   {
-    idInsurance: {
+    idackages: {
       type: Sequelize.NUMBER,
       unique: true,
     },
-    idPolicy: {
+    price: {
       type: Sequelize.NUMBER,
-      unique: true,
+    },
+    days: {
+      type: Sequelize.NUMBER,
     },
   },
   {  tableName },
 );
 
-export default Policy;
+export default Packages;
