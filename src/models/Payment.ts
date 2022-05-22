@@ -12,7 +12,6 @@ const Payment = sequelize.define(
     },
     amount: {
       type: Sequelize.NUMBER,
-
     },
     date: {
       type: Sequelize.DATE,

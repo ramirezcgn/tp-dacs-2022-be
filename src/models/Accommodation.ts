@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
+import Booking from './Booking';
 
 const tableName = 'accommodations';
 
@@ -19,5 +20,8 @@ const Accommodation = sequelize.define(
   },
   {  tableName },
 );
+
+Booking.hasMany(Accommodation);
+Accommodation.belongsTo(Booking);
 
 export default Accommodation;

@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
+import Policy from './Policy';
 
 const tableName = 'insurances';
 
@@ -11,7 +12,7 @@ const Insurance = sequelize.define(
       unique: true,
     },
     company: {
-      name: Sequelize.STRING,
+      type: Sequelize.STRING,
     },
     description: {
       type: Sequelize.STRING,
@@ -22,5 +23,8 @@ const Insurance = sequelize.define(
   },
   {  tableName },
 );
+
+Insurance.hasMany(Policy);
+Policy.belongsTo(Insurance);
 
 export default Insurance;

@@ -1,12 +1,12 @@
 import UserSeed from './user';
-import PostSeed from './post';
+//import PostSeed from './post';
 
 export default () =>
   Promise.all([
     // Returning and thus passing a Promise here
     // Independent seeds first
     UserSeed(),
-    PostSeed(),
+    //PostSeed(),
   ])
     .then(() => {
       // More seeds that require IDs from the seeds above

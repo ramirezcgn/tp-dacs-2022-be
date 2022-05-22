@@ -1,5 +1,7 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
+import Booking from './Booking';
+import Payment from './Payment';
 
 const tableName = 'customers';
 
@@ -11,7 +13,7 @@ const Customer = sequelize.define(
       unique: true,
     },
     firstName: {
-      name: Sequelize.STRING,
+      type: Sequelize.STRING,
     },
     lastName: {
       type: Sequelize.STRING,
@@ -22,5 +24,11 @@ const Customer = sequelize.define(
   },
   {  tableName },
 );
+
+Customer.hasMany(Payment);
+Payment.belongsTo(Customer);
+
+Customer.hasMany(Booking);
+Booking.belongsTo(Customer);
 
 export default Customer;

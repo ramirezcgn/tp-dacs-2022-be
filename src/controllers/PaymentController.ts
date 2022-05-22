@@ -1,13 +1,13 @@
-import userService from '../services/user.service';
+import paymentService from '../services/payment.service';
 
-const UserController = () => {
+const PaymentController = () => {
   const create = async (req, res) => {
     try {
-      const accommodation = await userService().create(req.body);
-      if (!accommodation) {
+      const payment = await paymentService().create(req.body);
+      if (!payment) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }
-      return res.status(200).json({ accommodation });
+      return res.status(200).json({ payment });
     } catch (err) {
       console.error(err);
       return res.status(500).json({ msg: 'Internal server error' });
@@ -16,11 +16,11 @@ const UserController = () => {
 
   const getAll = async (req, res) => {
     try {
-      const accommodations = await userService().getAll(0, 10);
-      if (!accommodations) {
+      const payments = await paymentService().getAll(0, 10);
+      if (!payments) {
         return res.status(400).json({ msg: 'Bad Request: Models not found' });
       }
-      return res.status(200).json({ accommodations });
+      return res.status(200).json({ payments });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ msg: 'Internal server error' });
@@ -29,11 +29,11 @@ const UserController = () => {
 
   const get = async (req, res) => {
     try {
-      const accommodation = await userService().get(req.params.id);
-      if (!accommodation) {
+      const payment = await paymentService().get(req.params.id);
+      if (!payment) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }
-      return res.status(200).json({ accommodation });
+      return res.status(200).json({ payment });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ msg: 'Internal server error' });
@@ -42,11 +42,11 @@ const UserController = () => {
 
   const update = async (req, res) => {
     try {
-      const accommodation = await userService().update(req.params.id, req.body);
-      if (!accommodation) {
+      const payment = await paymentService().update(req.params.id, req.body);
+      if (!payment) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }
-      return res.status(200).json({ accommodation });
+      return res.status(200).json({ payment });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ msg: 'Internal server error' });
@@ -55,7 +55,7 @@ const UserController = () => {
 
   const destroy = async (req, res) => {
     try {
-      const model = await userService().remove(req.params.id);
+      const model = await paymentService().remove(req.params.id);
       if (!model) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }
@@ -75,4 +75,4 @@ const UserController = () => {
   };
 };
 
-export default UserController;
+export default PaymentController;

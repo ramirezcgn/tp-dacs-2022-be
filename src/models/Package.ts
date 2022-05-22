@@ -1,10 +1,11 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
+import Booking from './Booking';
 
 const tableName = 'packages';
 
-const Packages = sequelize.define(
-  'Packages',
+const Package = sequelize.define(
+  'Package',
   {
     idackages: {
       type: Sequelize.NUMBER,
@@ -20,4 +21,7 @@ const Packages = sequelize.define(
   {  tableName },
 );
 
-export default Packages;
+Package.hasMany(Booking);
+Booking.belongsTo(Package);
+
+export default Package;

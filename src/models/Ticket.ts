@@ -1,10 +1,10 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
 
-const tableName = 'shows';
+const tableName = 'tickets';
 
-const Show = sequelize.define(
-  'Show',
+const Ticket = sequelize.define(
+  'Ticket',
   {
     idTicket: {
       type: Sequelize.NUMBER,
@@ -17,4 +17,4 @@ const Show = sequelize.define(
   {  tableName },
 );
 
-export default Show;
+export default Ticket;

@@ -1,4 +1,4 @@
-import Post from '../../models/Post';
+/*import Post from '../../models/Post';
 
 export default () =>
   Post.bulkCreate(
@@ -15,3 +15,4 @@ export default () =>
       ignoreDuplicates: true,
     },
   );
+*/

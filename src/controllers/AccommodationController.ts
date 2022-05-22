@@ -1,9 +1,9 @@
-import userService from '../services/user.service';
+import accommodationService from '../services/accommodation.service';
 
-const UserController = () => {
+const AccommodationController = () => {
   const create = async (req, res) => {
     try {
-      const accommodation = await userService().create(req.body);
+      const accommodation = await accommodationService().create(req.body);
       if (!accommodation) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }
@@ -16,7 +16,7 @@ const UserController = () => {
 
   const getAll = async (req, res) => {
     try {
-      const accommodations = await userService().getAll(0, 10);
+      const accommodations = await accommodationService().getAll(0, 10);
       if (!accommodations) {
         return res.status(400).json({ msg: 'Bad Request: Models not found' });
       }
@@ -29,7 +29,7 @@ const UserController = () => {
 
   const get = async (req, res) => {
     try {
-      const accommodation = await userService().get(req.params.id);
+      const accommodation = await accommodationService().get(req.params.id);
       if (!accommodation) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }
@@ -42,7 +42,7 @@ const UserController = () => {
 
   const update = async (req, res) => {
     try {
-      const accommodation = await userService().update(req.params.id, req.body);
+      const accommodation = await accommodationService().update(req.params.id, req.body);
       if (!accommodation) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }
@@ -55,7 +55,7 @@ const UserController = () => {
 
   const destroy = async (req, res) => {
     try {
-      const model = await userService().remove(req.params.id);
+      const model = await accommodationService().remove(req.params.id);
       if (!model) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }
@@ -75,4 +75,4 @@ const UserController = () => {
   };
 };
 
-export default UserController;
+export default AccommodationController;
