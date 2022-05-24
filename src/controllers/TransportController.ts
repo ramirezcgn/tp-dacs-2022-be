@@ -42,7 +42,10 @@ const TransportController = () => {
 
   const update = async (req, res) => {
     try {
-      const transport = await transportService().update(req.params.id, req.body);
+      const transport = await transportService().update(
+        req.params.id,
+        req.body,
+      );
       if (!transport) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }

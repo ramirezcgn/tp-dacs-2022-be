@@ -42,7 +42,10 @@ const InsuranceController = () => {
 
   const update = async (req, res) => {
     try {
-      const insurance = await insuranceService().update(req.params.id, req.body);
+      const insurance = await insuranceService().update(
+        req.params.id,
+        req.body,
+      );
       if (!insurance) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }

@@ -21,7 +21,7 @@ const Insurance = sequelize.define(
       type: Sequelize.NUMBER,
     },
   },
-  {  tableName },
+  { tableName },
 );
 
 Insurance.hasMany(Policy);

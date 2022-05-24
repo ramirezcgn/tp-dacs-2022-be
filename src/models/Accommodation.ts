@@ -18,7 +18,7 @@ const Accommodation = sequelize.define(
       type: Sequelize.DATE,
     },
   },
-  {  tableName },
+  { tableName },
 );
 
 Booking.hasMany(Accommodation);

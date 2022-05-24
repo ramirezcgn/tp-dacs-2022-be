@@ -22,7 +22,7 @@ const Customer = sequelize.define(
       type: Sequelize.DATE,
     },
   },
-  {  tableName },
+  { tableName },
 );
 
 Customer.hasMany(Payment);

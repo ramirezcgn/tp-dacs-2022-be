@@ -42,7 +42,10 @@ const PassengerController = () => {
 
   const update = async (req, res) => {
     try {
-      const passenger = await passengerService().update(req.params.id, req.body);
+      const passenger = await passengerService().update(
+        req.params.id,
+        req.body,
+      );
       if (!passenger) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }

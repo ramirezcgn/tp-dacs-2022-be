@@ -14,6 +14,9 @@ export default class InsuranceRepository implements Repository {
 
   create(data) {
     const user = User.findByPk(1);
+    console.log(
+      '###############################################################################',
+    );
     return Insurance.create(
       {
         ...data,
