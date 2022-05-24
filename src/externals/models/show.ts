@@ -6,20 +6,20 @@ const tableName = 'shows';
 const Show = sequelize.define(
   'Show',
   {
-    idService: {
+    idShow: {
       type: Sequelize.NUMBER,
       unique: true,
     },
     name: {
       type: Sequelize.STRING,
     },
+    description: {
+      type: Sequelize.STRING,
+    },
     amount: {
       type: Sequelize.NUMBER,
     },
-    fromDate: {
-      type: Sequelize.DATE,
-    },
-    toDate: {
+    date: {
       type: Sequelize.DATE,
     },
   },
