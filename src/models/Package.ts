@@ -18,7 +18,7 @@ const Package = sequelize.define(
       type: Sequelize.NUMBER,
     },
   },
-  {  tableName },
+  { tableName },
 );
 
 Package.hasMany(Booking);

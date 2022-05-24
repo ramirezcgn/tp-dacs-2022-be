@@ -14,7 +14,7 @@ const Transport = sequelize.define(
       type: Sequelize.NUMBER,
     },
   },
-  {  tableName },
+  { tableName },
 );
 
 export default Transport;

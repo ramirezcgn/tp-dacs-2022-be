@@ -17,7 +17,7 @@ const Payment = sequelize.define(
       type: Sequelize.DATE,
     },
   },
-  {  tableName },
+  { tableName },
 );
 
 export default Payment;

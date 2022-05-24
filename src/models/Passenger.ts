@@ -22,7 +22,7 @@ const Passenger = sequelize.define(
       type: Sequelize.DATE,
     },
   },
-  {  tableName },
+  { tableName },
 );
 
 Passenger.hasMany(Transport);

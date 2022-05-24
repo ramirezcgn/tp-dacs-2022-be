@@ -15,7 +15,7 @@ const Policy = sequelize.define(
       unique: true,
     },
   },
-  {  tableName },
+  { tableName },
 );
 
 export default Policy;
