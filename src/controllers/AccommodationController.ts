@@ -42,7 +42,10 @@ const AccommodationController = () => {
 
   const update = async (req, res) => {
     try {
-      const accommodation = await accommodationService().update(req.params.id, req.body);
+      const accommodation = await accommodationService().update(
+        req.params.id,
+        req.body,
+      );
       if (!accommodation) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }
@@ -66,8 +69,22 @@ const AccommodationController = () => {
     }
   };
 
+  const buscarReserva = async (req, res) => {
+    try {
+      const result = await accommodationService();
+      if (!result) {
+        return res.status(400).json({ msg: 'Bad Request: Email not sent' });
+      }
+      return res.status(200).json({ msg: 'Successfully email sent' });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
+
   return {
     getAll,
+    buscarReserva,
     get,
     update,
     create,

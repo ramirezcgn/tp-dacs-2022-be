@@ -1,5 +1,5 @@
 import TicketRepository from '../repositories/TicketRepository';
-import emailService from './email.service';
+//import emailService from './email.service';
 
 const ticket = new TicketRepository();
 

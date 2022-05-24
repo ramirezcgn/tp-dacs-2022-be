@@ -42,7 +42,10 @@ const PaymentPlanController = () => {
 
   const update = async (req, res) => {
     try {
-      const paymentPlan = await paymentPlanService().update(req.params.id, req.body);
+      const paymentPlan = await paymentPlanService().update(
+        req.params.id,
+        req.body,
+      );
       if (!paymentPlan) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }

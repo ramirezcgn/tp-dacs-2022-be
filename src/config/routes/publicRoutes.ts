@@ -5,6 +5,7 @@ const publicRoutes = {
   'POST /login': 'AuthController.login',
   'POST /validate': 'AuthController.validate',
   // Accomodation
+  'GET /accomodation/p': 'AccomodationController.buscarReserva', //no anda
   'GET /accomodation/': 'AccomodationController.getAll',
   'GET /accomodation/:id': 'AccomodationController.get',
   'POST /accomodation/': 'AccomodationController.create',

@@ -13,6 +13,7 @@
     "drop-sqlite-db": "shx rm ./db/database.sqlite",
     "seed-sqlite-db": "npx sequelize-cli db:seed:all",
     "lint": "eslint src",
+    "lint-fix": "eslint src --fix",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "prepush": "npm run test",
     "pretest": "npm run lint",

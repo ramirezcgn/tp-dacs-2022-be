@@ -13,6 +13,12 @@ const Transport = sequelize.define(
     date: {
       type: Sequelize.NUMBER,
     },
+    origin: {
+      type: Sequelize.STRING,
+    },
+    destination: {
+      type: Sequelize.STRING,
+    },
   },
   { tableName },
 );
