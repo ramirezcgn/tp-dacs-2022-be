@@ -10,7 +10,6 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import mapRoutes from './libs/express-routes-mapper';
-//import funcion  from './services/accommodation.service';
 
 /**
  * server configuration
@@ -79,8 +78,6 @@ server.listen(config.port, () => {
     process.exit(1);
   }
   const url = `http://localhost:${config.port}`;
-
   console.log(`\nAPI Server is running at: \x1b[32m${url}\x1b[0m\n`);
-
   return DB;
 });

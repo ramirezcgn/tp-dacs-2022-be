@@ -5,12 +5,11 @@ const publicRoutes = {
   'POST /login': 'AuthController.login',
   'POST /validate': 'AuthController.validate',
   // Accomodation
-  'GET /accomodation/p': 'AccomodationController.buscarReserva', //no anda
-  'GET /accomodation/': 'AccomodationController.getAll',
-  'GET /accomodation/:id': 'AccomodationController.get',
-  'POST /accomodation/': 'AccomodationController.create',
-  'PUT /accomodation/:id': 'AccomodationController.update',
-  'DELETE /accomodation/:id': 'AccomodationController.destroy',
+  'GET /accomodation/': 'AccommodationController.getAll',
+  'GET /accomodation/:id': 'AccommodationController.get',
+  'POST /accomodation/': 'AccommodationController.create',
+  'PUT /accomodation/:id': 'AccommodationController.update',
+  'DELETE /accomodation/:id': 'AccommodationController.destroy',
   // Booking
   'GET /booking/': 'BookingController.getAll',
   'GET /booking/:id': 'BookingController.get',
