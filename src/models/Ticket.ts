@@ -10,6 +10,12 @@ const Ticket = sequelize.define(
       type: Sequelize.NUMBER,
       unique: true,
     },
+    name: {
+      type: Sequelize.STRING,
+    },
+    description: {
+      type: Sequelize.STRING,
+    },
     date: {
       type: Sequelize.DATE,
     },

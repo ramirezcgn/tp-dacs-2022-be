@@ -7,7 +7,7 @@ const publicRoutes = {
   // Accomodation
   'GET /accommodation/': 'AccommodationController.getAll',
   'GET /accommodation/:id': 'AccommodationController.get',
-  'POST /accommodation/': 'AccommodationController.create',
+  //'POST /accommodation/': 'AccommodationController.create',
   'PUT /accommodation/:id': 'AccommodationController.update',
   'DELETE /accommodation/:id': 'AccommodationController.destroy',
   // Booking
@@ -34,6 +34,11 @@ const publicRoutes = {
   'POST /package/': 'PackageController.create',
   'PUT /package/:id': 'PackageController.update',
   'DELETE /package/:id': 'PackageController.destroy',
+  'POST /package/:id/assignTransport': 'PackageController.assignTransport',
+  'POST /package/:id/assignAccommodation':
+    'PackageController.assignAccommodation',
+  'POST /package/:id/assignTicket': 'PackageController.assignTicket',
+
   // Passenger
   'GET /passenger/': 'PassengerController.getAll',
   'GET /passenger/:id': 'PassengerController.get',
@@ -61,13 +66,13 @@ const publicRoutes = {
   // Ticket
   'GET /ticket/': 'TicketController.getAll',
   'GET /ticket/:id': 'TicketController.get',
-  'POST /ticket/': 'TicketController.create',
+  //'POST /ticket/': 'TicketController.create',
   'PUT /ticket/:id': 'TicketController.update',
   'DELETE /ticket/:id': 'TicketController.destroy',
   // Transport
   'GET /transport/': 'TransportController.getAll',
   'GET /transport/:id': 'TransportController.get',
-  'POST /transport/': 'TransportController.create',
+  //'POST /transport/': 'TransportController.create',
   'PUT /transport/:id': 'TransportController.update',
   'DELETE /transport/:id': 'TransportController.destroy',
   // User

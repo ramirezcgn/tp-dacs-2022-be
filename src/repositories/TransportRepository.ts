@@ -1,26 +1,24 @@
 import Repository from './Repository';
 import Transport from '../models/Transport';
-import User from '../models/User';
 
 export default class TransportRepository implements Repository {
   get(id) {
-    return Transport.findByPk(id, { include: User });
+    return Transport.findByPk(id);
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   getAll(page: number, limit: number) {
-    return Transport.findAll({ include: User });
+    return Transport.findAll();
   }
 
-  create(data) {
-    const user = User.findByPk(1);
+  create(data, _package) {
     return Transport.create(
       {
         ...data,
-        user,
+        package: _package,
       },
       {
-        association: Transport.User,
+        association: Transport.Package,
       },
     );
   }

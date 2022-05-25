@@ -12,15 +12,14 @@ export default class TicketRepository implements Repository {
     return Ticket.findAll({ include: User });
   }
 
-  create(data) {
-    const user = User.findByPk(1);
+  create(data, _package) {
     return Ticket.create(
       {
         ...data,
-        user,
+        package: _package,
       },
       {
-        association: Ticket.User,
+        association: Ticket.package,
       },
     );
   }

@@ -7,7 +7,7 @@ const accommodation = new AccommodationRepository();
 const accommodationService = () => {
   const get = (id) => accommodation.get(id);
   const getAll = (page, limit) => accommodation.getAll(page, limit);
-  const create = (data) => accommodation.create(data);
+  const create = (data, _package) => accommodation.create(data, _package);
   const update = (id, data) => accommodation.update(id, data);
   const remove = (id) => accommodation.remove(id);
 

@@ -1,7 +1,6 @@
 import Sequelize from 'sequelize';
 import sequelize from '../config/database';
 import Policy from './Policy';
-import Transport from './Transport';
 
 const tableName = 'passengers';
 
@@ -24,9 +23,6 @@ const Passenger = sequelize.define(
   },
   { tableName },
 );
-
-Passenger.hasMany(Transport);
-Transport.belongsTo(Passenger);
 
 Passenger.hasOne(Policy);
 

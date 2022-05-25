@@ -1,18 +1,18 @@
 import accommodationService from '../services/accommodation.service';
 
 const AccommodationController = () => {
-  const create = async (req, res) => {
-    try {
-      const accommodation = await accommodationService().create(req.body);
-      if (!accommodation) {
-        return res.status(400).json({ msg: 'Bad Request: Model not found' });
-      }
-      return res.status(200).json({ accommodation });
-    } catch (err) {
-      console.error(err);
-      return res.status(500).json({ msg: 'Internal server error' });
-    }
-  };
+  // const create = async (req, res) => {
+  //   try {
+  //     const accommodation = await accommodationService().create(req.body);
+  //     if (!accommodation) {
+  //       return res.status(400).json({ msg: 'Bad Request: Model not found' });
+  //     }
+  //     return res.status(200).json({ accommodation });
+  //   } catch (err) {
+  //     console.error(err);
+  //     return res.status(500).json({ msg: 'Internal server error' });
+  //   }
+  // };
 
   const getAll = async (req, res) => {
     try {
@@ -87,7 +87,7 @@ const AccommodationController = () => {
     buscarReserva,
     get,
     update,
-    create,
+    //create,
     destroy,
   };
 };

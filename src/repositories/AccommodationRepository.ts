@@ -12,15 +12,14 @@ export default class AccommodationRepository implements Repository {
     return Accommodation.findAll({ include: User });
   }
 
-  create(data) {
-    const user = User.findByPk(1);
+  create(data, _package) {
     return Accommodation.create(
       {
         ...data,
-        user,
+        package: _package,
       },
       {
-        association: Accommodation.User,
+        association: Accommodation.Package,
       },
     );
   }

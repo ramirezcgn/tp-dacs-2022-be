@@ -65,6 +65,51 @@ const PackageController = () => {
       return res.status(500).json({ msg: 'Internal server error' });
     }
   };
+  const assignTransport = async (req, res) => {
+    try {
+      const _package = await packageService().assignTransport(
+        req.params.id,
+        req.body,
+      );
+      if (!_package) {
+        return res.status(400).json({ msg: 'Bad Request: Model not found' });
+      }
+      return res.status(200).json({ _package });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
+  const assignTicket = async (req, res) => {
+    try {
+      const _package = await packageService().assignTicket(
+        req.params.id,
+        req.body,
+      );
+      if (!_package) {
+        return res.status(400).json({ msg: 'Bad Request: Model not found' });
+      }
+      return res.status(200).json({ _package });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
+  const assignAccommodation = async (req, res) => {
+    try {
+      const _package = await packageService().assignAccommodation(
+        req.params.id,
+        req.body,
+      );
+      if (!_package) {
+        return res.status(400).json({ msg: 'Bad Request: Model not found' });
+      }
+      return res.status(200).json({ _package });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
 
   return {
     getAll,
@@ -72,6 +117,9 @@ const PackageController = () => {
     update,
     create,
     destroy,
+    assignTransport,
+    assignTicket,
+    assignAccommodation,
   };
 };
 

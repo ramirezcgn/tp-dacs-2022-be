@@ -4,12 +4,12 @@ import User from '../models/User';
 
 export default class PackageRepository implements Repository {
   get(id) {
-    return Package.findByPk(id, { include: User });
+    return Package.findByPk(id);
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   getAll(page: number, limit: number) {
-    return Package.findAll({ include: User });
+    return Package.findAll();
   }
 
   create(data) {

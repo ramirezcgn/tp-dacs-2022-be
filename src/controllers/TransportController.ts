@@ -1,18 +1,18 @@
 import transportService from '../services/transport.service';
 
 const TransportController = () => {
-  const create = async (req, res) => {
-    try {
-      const transport = await transportService().create(req.body);
-      if (!transport) {
-        return res.status(400).json({ msg: 'Bad Request: Model not found' });
-      }
-      return res.status(200).json({ transport });
-    } catch (err) {
-      console.error(err);
-      return res.status(500).json({ msg: 'Internal server error' });
-    }
-  };
+  // const create = async (req, res) => {
+  //   try {
+  //     const transport = await transportService().create(req.body);
+  //     if (!transport) {
+  //       return res.status(400).json({ msg: 'Bad Request: Model not found' });
+  //     }
+  //     return res.status(200).json({ transport });
+  //   } catch (err) {
+  //     console.error(err);
+  //     return res.status(500).json({ msg: 'Internal server error' });
+  //   }
+  // };
 
   const getAll = async (req, res) => {
     try {
@@ -73,7 +73,7 @@ const TransportController = () => {
     getAll,
     get,
     update,
-    create,
+    //create,
     destroy,
   };
 };
