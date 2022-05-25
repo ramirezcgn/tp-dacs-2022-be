@@ -11,6 +11,7 @@ const packageService = () => {
   const create = (data) => _package.create(data);
   const update = (id, data) => _package.update(id, data);
   const remove = (id) => _package.remove(id);
+
   const assignTicket = (id, data) => {
     const p = _package.get(id);
     return ticketService().create(data, p);

@@ -65,6 +65,7 @@ const PackageController = () => {
       return res.status(500).json({ msg: 'Internal server error' });
     }
   };
+
   const assignTransport = async (req, res) => {
     try {
       const _package = await packageService().assignTransport(
@@ -80,6 +81,7 @@ const PackageController = () => {
       return res.status(500).json({ msg: 'Internal server error' });
     }
   };
+
   const assignTicket = async (req, res) => {
     try {
       const _package = await packageService().assignTicket(
@@ -95,6 +97,7 @@ const PackageController = () => {
       return res.status(500).json({ msg: 'Internal server error' });
     }
   };
+
   const assignAccommodation = async (req, res) => {
     try {
       const _package = await packageService().assignAccommodation(
