@@ -2,7 +2,7 @@
 
 ```sh
 docker build . -t tp-dacs-2022-be
-docker run -p 3001:3001 -d tp-dacs-2022-be
+docker run -p 3001:3001 -p 9229:9229 -d tp-dacs-2022-be
 ```
 
 ## Install and Use

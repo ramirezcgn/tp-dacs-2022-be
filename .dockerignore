@@ -3,5 +3,6 @@
 .vscode
 coverage
 db
+src
 node_modules
 npm-debug.log
