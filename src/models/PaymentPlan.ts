@@ -7,11 +7,7 @@ const tableName = 'payments-plans';
 const PaymentPlan = sequelize.define(
   'PaymentPlan',
   {
-    idPlan: {
-      type: Sequelize.NUMBER,
-      unique: true,
-    },
-    couteTotal: {
+    dueTotal: {
       type: Sequelize.DATE,
     },
   },

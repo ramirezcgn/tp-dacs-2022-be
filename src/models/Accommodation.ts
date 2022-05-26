@@ -6,8 +6,8 @@ const tableName = 'accommodations';
 const Accommodation = sequelize.define(
   'Accommodation',
   {
-    idHotel: {
-      type: Sequelize.NUMBER,
+    externalId: {
+      type: Sequelize.STRING,
       unique: true,
     },
     dtoDate: {

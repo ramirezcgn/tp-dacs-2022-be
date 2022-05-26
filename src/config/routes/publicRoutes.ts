@@ -34,7 +34,7 @@ const publicRoutes = {
   'POST /package/': 'PackageController.create',
   'PUT /package/:id': 'PackageController.update',
   'DELETE /package/:id': 'PackageController.destroy',
-  'POST /package/:id/assignTransport': 'PackageController.assignTransport',
+  'POST /package/:id/assignTransport/': 'PackageController.assignTransport',
   'POST /package/:id/assignAccommodation':
     'PackageController.assignAccommodation',
   'POST /package/:id/assignTicket': 'PackageController.assignTicket',

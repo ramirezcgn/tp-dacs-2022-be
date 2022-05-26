@@ -18,6 +18,7 @@ import config from './config';
 import seeder from './config/seeds';
 import dbService from './services/dbService';
 import auth from './policies/auth.policy';
+import listRoutes from './utils/listRoutes';
 
 declare const process: {
   env: {
@@ -65,6 +66,8 @@ app.all('/private/*', (req, res, next) => auth(req, res, next));
 // fill routes for express application
 app.use('/public', mappedOpenRoutes);
 app.use('/private', mappedAuthRoutes);
+
+listRoutes(app);
 
 server.listen(config.port, () => {
   if (

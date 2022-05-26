@@ -25,7 +25,7 @@ const packageService = () => {
 
   const assignTransport = (id, data) => {
     const t = _package.get(id);
-    return transportService().create(data, t);
+    return transportService().assignTransport(data, t);
   };
 
   const testEmailService = () => {

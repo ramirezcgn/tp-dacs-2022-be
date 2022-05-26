@@ -6,10 +6,6 @@ const tableName = 'payments';
 const Payment = sequelize.define(
   'Payment',
   {
-    idBooking: {
-      type: Sequelize.NUMBER,
-      unique: true,
-    },
     amount: {
       type: Sequelize.NUMBER,
     },

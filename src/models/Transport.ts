@@ -6,8 +6,8 @@ const tableName = 'transports';
 const Transport = sequelize.define(
   'Transport',
   {
-    idTransport: {
-      type: Sequelize.NUMBER,
+    externalId: {
+      type: Sequelize.STRING,
       unique: true,
     },
     date: {

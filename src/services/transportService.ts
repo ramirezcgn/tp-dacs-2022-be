@@ -1,6 +1,5 @@
 import TransportRepository from '../repositories/TransportRepository';
-import buscarVuelos2 from './findTransportService';
-import reservarVuelos2 from './selectTransportService';
+import extTransportService from './extTransportService';
 
 const transport = new TransportRepository();
 
@@ -11,15 +10,18 @@ const transportService = () => {
   const update = (id, data) => transport.update(id, data);
   const remove = (id) => transport.remove(id);
 
-  const buscarVuelos = async () => {
-    const result = buscarVuelos2();
+  const listTransport = async () => {
+    const result = extTransportService().getAll();
     console.log({ result });
     return result;
   };
 
-  const reservarVuelos = async () => {
-    const result = reservarVuelos2(123);
+  const assignTransport = async (data, _package) => {
+    const { externalId, places } = data;
+    const result = extTransportService().select(externalId, places);
     console.log({ result });
+
+    create(data, _package);
     return result;
   };
 
@@ -29,8 +31,8 @@ const transportService = () => {
     create,
     update,
     remove,
-    buscarVuelos,
-    reservarVuelos,
+    listTransport,
+    assignTransport,
   };
 };
 

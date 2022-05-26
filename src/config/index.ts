@@ -12,6 +12,7 @@ const config = {
   privateRoutes,
   publicRoutes,
   port: process.env.PORT || '3001',
+  externalApi: 'http://localhost:4000/api',
 };
 
 export default config;

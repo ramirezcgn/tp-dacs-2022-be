@@ -7,10 +7,6 @@ const tableName = 'insurances';
 const Insurance = sequelize.define(
   'Insurance',
   {
-    idInsurance: {
-      type: Sequelize.NUMBER,
-      unique: true,
-    },
     company: {
       type: Sequelize.STRING,
     },

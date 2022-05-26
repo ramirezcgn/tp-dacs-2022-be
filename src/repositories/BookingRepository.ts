@@ -4,12 +4,12 @@ import User from '../models/User';
 
 export default class BookingRepository implements Repository {
   get(id) {
-    return Booking.findByPk(id, { include: User });
+    return Booking.findByPk(id);
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   getAll(page: number, limit: number) {
-    return Booking.findAll({ include: User });
+    return Booking.findAll();
   }
 
   create(data) {

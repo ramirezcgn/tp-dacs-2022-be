@@ -2,6 +2,7 @@ import { createClient } from 'redis';
 
 export default async function emailStreamProducer() {
   const client = createClient({
+    url: 'redis://dacs_redis_db:6379',
     socket: {
       reconnectStrategy: (retries) => Math.min(retries * 50, 500),
     },

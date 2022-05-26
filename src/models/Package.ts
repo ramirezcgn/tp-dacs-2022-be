@@ -10,10 +10,6 @@ const tableName = 'packages';
 const Package = sequelize.define(
   'Package',
   {
-    idPackage: {
-      type: Sequelize.NUMBER,
-      unique: true,
-    },
     name: {
       type: Sequelize.STRING,
     },

@@ -6,8 +6,8 @@ const tableName = 'tickets';
 const Ticket = sequelize.define(
   'Ticket',
   {
-    idTicket: {
-      type: Sequelize.NUMBER,
+    externalId: {
+      type: Sequelize.STRING,
       unique: true,
     },
     name: {
