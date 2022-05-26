@@ -18,11 +18,11 @@ const transportService = () => {
 
   const assignTransport = async (data, _package) => {
     const { externalId, places } = data;
-    const result = extTransportService().select(externalId, places);
-    console.log({ result });
-
-    create(data, _package);
-    return result;
+    const response = await extTransportService().select(externalId, places);
+    if (response) {
+      return create(data, _package);
+    }
+    return false;
   };
 
   return {

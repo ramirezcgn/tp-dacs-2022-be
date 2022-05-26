@@ -1,8 +1,11 @@
 import { createClient } from 'redis';
+import config from '../config';
+
+const { redisServer } = config;
 
 export default async function emailStreamProducer() {
   const client = createClient({
-    url: 'redis://dacs_redis_db:6379',
+    url: redisServer,
     socket: {
       reconnectStrategy: (retries) => Math.min(retries * 50, 500),
     },

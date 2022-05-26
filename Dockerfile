@@ -20,4 +20,7 @@ EXPOSE 9229
 
 VOLUME ["./src:/usr/src/app/src", "./db:/usr/src/app/db"]
 
+ENV EXTERNAL_HOST dacs_external
+ENV REDIS_HOST dacs_redis_db
+
 CMD [ "npm", "run", "start" ]
