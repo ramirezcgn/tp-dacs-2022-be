@@ -7,7 +7,7 @@ const PaymentPlanController = () => {
       if (!paymentPlan) {
         return res.status(400).json({ msg: 'Bad Request: Model not found' });
       }
-      return res.status(200).json({ paymentPlan });
+      return res.status(201).json({ paymentPlan });
     } catch (err) {
       console.error(err);
       return res.status(500).json({ msg: 'Internal server error' });
