@@ -1,0 +1,7 @@
+.github
+.husky
+.vscode
+coverage
+db
+node_modules
+npm-debug.log

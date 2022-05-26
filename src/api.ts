@@ -16,7 +16,7 @@ import mapRoutes from './libs/express-routes-mapper';
  */
 import config from './config';
 import seeder from './config/seeds';
-import dbService from './services/db.service';
+import dbService from './services/dbService';
 import auth from './policies/auth.policy';
 
 declare const process: {

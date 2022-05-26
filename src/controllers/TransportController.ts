@@ -1,4 +1,4 @@
-import transportService from '../services/transport.service';
+import transportService from '../services/transportService';
 
 const TransportController = () => {
   // const create = async (req, res) => {

@@ -1,4 +1,4 @@
-import packageService from '../services/package.service';
+import packageService from '../services/packageService';
 
 const PackageController = () => {
   const create = async (req, res) => {
@@ -114,6 +114,16 @@ const PackageController = () => {
     }
   };
 
+  const testEmailService = async (req, res) => {
+    try {
+      await packageService().testEmailService();
+      return res.status(200).json({ msg: 'Successfully email sent' });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
+
   return {
     getAll,
     get,
@@ -123,6 +133,7 @@ const PackageController = () => {
     assignTransport,
     assignTicket,
     assignAccommodation,
+    testEmailService,
   };
 };
 

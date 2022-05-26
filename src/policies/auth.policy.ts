@@ -1,4 +1,4 @@
-import JWTService from '../services/auth.service';
+import JWTService from '../services/authService';
 
 // usually: "Authorization: Bearer [token]" or "token: [token]"
 export default (req, res, next) => {

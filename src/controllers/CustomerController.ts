@@ -1,4 +1,4 @@
-import customerService from '../services/customer.service';
+import customerService from '../services/customerService';
 
 const CustomerController = () => {
   const create = async (req, res) => {

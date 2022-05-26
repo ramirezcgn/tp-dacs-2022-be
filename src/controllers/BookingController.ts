@@ -1,4 +1,4 @@
-import bookingService from '../services/booking.service';
+import bookingService from '../services/bookingService';
 
 const BookingController = () => {
   const create = async (req, res) => {

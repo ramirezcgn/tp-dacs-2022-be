@@ -1,4 +1,4 @@
-import paymentPlanService from '../services/payment.plan.service';
+import paymentPlanService from '../services/paymentPlanService';
 
 const PaymentPlanController = () => {
   const create = async (req, res) => {

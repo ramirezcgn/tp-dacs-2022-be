@@ -1,4 +1,4 @@
-import policyService from '../services/policy.service';
+import policyService from '../services/policyService';
 
 const PolicyController = () => {
   const create = async (req, res) => {

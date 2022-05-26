@@ -1,4 +1,4 @@
-import insuranceService from '../services/insurance.service';
+import insuranceService from '../services/insuranceService';
 
 const InsuranceController = () => {
   const create = async (req, res) => {

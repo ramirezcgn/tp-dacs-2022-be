@@ -1,4 +1,4 @@
-import passengerService from '../services/passenger.service';
+import passengerService from '../services/passengerService';
 
 const PassengerController = () => {
   const create = async (req, res) => {

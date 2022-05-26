@@ -1,6 +1,6 @@
 import User from '../models/User';
-import authService from '../services/auth.service';
-import bcryptService from '../services/bcrypt.service';
+import authService from '../services/authService';
+import bcryptService from '../services/bcryptService';
 
 const AuthController = () => {
   const register = async (req, res) => {

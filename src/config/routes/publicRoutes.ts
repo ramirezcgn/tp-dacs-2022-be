@@ -38,7 +38,7 @@ const publicRoutes = {
   'POST /package/:id/assignAccommodation':
     'PackageController.assignAccommodation',
   'POST /package/:id/assignTicket': 'PackageController.assignTicket',
-
+  'POST /package/testEmailService/': 'PackageController.testEmailService',
   // Passenger
   'GET /passenger/': 'PassengerController.getAll',
   'GET /passenger/:id': 'PassengerController.get',

@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import bcryptService from '../services/bcrypt.service';
+import bcryptService from '../services/bcryptService';
 import sequelize from '../config/database';
 import Payment from './Payment';
 import Booking from './Booking';

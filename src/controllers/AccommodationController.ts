@@ -1,4 +1,4 @@
-import accommodationService from '../services/accommodation.service';
+import accommodationService from '../services/accommodationService';
 
 const AccommodationController = () => {
   // const create = async (req, res) => {

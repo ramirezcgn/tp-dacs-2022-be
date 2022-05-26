@@ -1,4 +1,4 @@
-import ticketService from '../services/ticket.service';
+import ticketService from '../services/ticketService';
 
 const TicketController = () => {
   // const create = async (req, res) => {
