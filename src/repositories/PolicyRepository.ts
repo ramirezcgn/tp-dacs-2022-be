@@ -4,12 +4,12 @@ import User from '../models/User';
 
 export default class PolicyRepository implements Repository {
   get(id) {
-    return Policy.findByPk(id, { include: User });
+    return Policy.findByPk(id);
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   getAll(page: number, limit: number) {
-    return Policy.findAll({ include: User });
+    return Policy.findAll();
   }
 
   create(data) {

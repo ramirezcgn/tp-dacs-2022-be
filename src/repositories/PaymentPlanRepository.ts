@@ -4,12 +4,12 @@ import User from '../models/User';
 
 export default class PaymentPlanRepository implements Repository {
   get(id) {
-    return PaymentPlan.findByPk(id, { include: User });
+    return PaymentPlan.findByPk(id);
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   getAll(page: number, limit: number) {
-    return PaymentPlan.findAll({ include: User });
+    return PaymentPlan.findAll();
   }
 
   create(data) {

@@ -1,15 +1,14 @@
 import Repository from './Repository';
 import Ticket from '../models/Ticket';
-import User from '../models/User';
 
 export default class TicketRepository implements Repository {
   get(id) {
-    return Ticket.findByPk(id, { include: User });
+    return Ticket.findByPk(id);
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   getAll(page: number, limit: number) {
-    return Ticket.findAll({ include: User });
+    return Ticket.findAll();
   }
 
   create(data, _package) {

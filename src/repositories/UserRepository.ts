@@ -3,12 +3,12 @@ import User from '../models/User';
 
 export default class UserRepository implements Repository {
   get(id) {
-    return User.findByPk(id, { include: User });
+    return User.findByPk(id);
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   getAll(page: number, limit: number) {
-    return User.findAll({ include: User });
+    return User.findAll();
   }
 
   create(data) {

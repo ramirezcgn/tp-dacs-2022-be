@@ -4,12 +4,12 @@ import User from '../models/User';
 
 export default class PassengerRepository implements Repository {
   get(id) {
-    return Passenger.findByPk(id, { include: User });
+    return Passenger.findByPk(id);
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   getAll(page: number, limit: number) {
-    return Passenger.findAll({ include: User });
+    return Passenger.findAll();
   }
 
   create(data) {

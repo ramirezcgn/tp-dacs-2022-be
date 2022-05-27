@@ -4,12 +4,12 @@ import User from '../models/User';
 
 export default class InsuranceRepository implements Repository {
   get(id) {
-    return Insurance.findByPk(id, { include: User });
+    return Insurance.findByPk(id);
   }
 
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   getAll(page: number, limit: number) {
-    return Insurance.findAll({ include: User });
+    return Insurance.findAll();
   }
 
   create(data) {
