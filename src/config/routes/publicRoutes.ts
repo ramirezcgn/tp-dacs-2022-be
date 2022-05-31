@@ -13,7 +13,7 @@ const publicRoutes = {
   // Booking
   'GET /booking/': 'BookingController.getAll',
   'GET /booking/:id': 'BookingController.get',
-  'POST /booking/': 'BookingController.create',
+  //'POST /booking/': 'BookingController.create',
   'POST /booking/:id/createPassenger/': 'BookingController.createPassenger',
   'POST /booking/:id/assignPassenger/:pd': 'BookingController.assignPassenger',
   'PUT /booking/:id': 'BookingController.update',

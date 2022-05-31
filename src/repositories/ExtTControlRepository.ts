@@ -8,6 +8,10 @@ export default class ExtTControlRepository {
     const { aprobada } = await request.post(
       `${turismoControlApi}/operacion`,
       data,
+      {
+        headers: {"content-type": "application/json"}
+    },   
+  
     );
     return aprobada;
   }

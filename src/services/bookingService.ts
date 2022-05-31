@@ -16,19 +16,23 @@ const bookingService = () => {
     if (!b) {
       return false;
     }
-    const p = passengerService().create(data);
-    return b + p;
+    const p = await passengerService().create(data);
+    return bookingService().assignPassenger(id,p);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // eslint-disable-next-line no-unused-vars
+ 
   const assignPassenger = async (id, pd) => {
     const b = await get(id);
     if (!b) {
       return false;
     }
-    // eslint-disable-next-line no-undef
-    return passengerService().create(id);
+    
+    const p = await passengerService().get(pd);
+    if (!p) {
+      return false;
+    }
+
+    return bookingService().assignPassenger(id,p);
   };
 
   return {

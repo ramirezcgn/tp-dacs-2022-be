@@ -29,7 +29,7 @@ const request = () => {
       return data;
     } catch (error) {
       const { response } = error;
-      console.log('Request Error: ', response.data);
+      console.log('Request Error: ', response?.data);
     }
     return null;
   };
