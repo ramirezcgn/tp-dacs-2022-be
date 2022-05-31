@@ -1,7 +1,7 @@
 import bookingService from '../services/bookingService';
 
 const BookingController = () => {
-  const create = async (req, res) => {
+  /*const create = async (req, res) => {
     try {
       const booking = await bookingService().create(req.body);
       if (!booking) {
@@ -12,7 +12,7 @@ const BookingController = () => {
       console.error(err);
       return res.status(500).json({ msg: 'Internal server error' });
     }
-  };
+  };*/
 
   const getAll = async (req, res) => {
     try {
@@ -66,12 +66,46 @@ const BookingController = () => {
     }
   };
 
+  const createPassenger = async (req, res) => {
+    try {
+      const passenger = await bookingService().createPassenger(
+        req.params.id,
+        req.body,
+      );
+      if (!passenger) {
+        return res.status(400).json({ msg: 'Bad Request: Model not found' });
+      }
+      return res.status(201).json({ passenger });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
+
+  const assignPassenger = async (req, res) => {
+    try {
+      const passenger = await bookingService().assignPassenger(
+        req.params.id,
+        req.params.pd,
+      );
+      if (!passenger) {
+        return res.status(400).json({ msg: 'Bad Request: Model not found' });
+      }
+      return res.status(201).json({ passenger });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
+
   return {
     getAll,
     get,
     update,
-    create,
+    //create,
     destroy,
+    createPassenger,
+    assignPassenger,
   };
 };
 

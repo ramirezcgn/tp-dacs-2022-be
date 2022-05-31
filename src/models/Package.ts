@@ -4,6 +4,7 @@ import Booking from './Booking';
 import Transport from './Transport';
 import Accommodation from './Accommodation';
 import Ticket from './Ticket';
+import Insurance from './Insurance';
 
 const tableName = 'packages';
 
@@ -40,6 +41,9 @@ Booking.belongsTo(Package);
 
 Package.hasMany(Accommodation);
 Accommodation.belongsTo(Package);
+
+Insurance.hasMany(Package);
+Package.belongsTo(Insurance);
 
 Package.hasMany(Ticket);
 Ticket.belongsTo(Package);

@@ -14,12 +14,15 @@ const publicRoutes = {
   'GET /booking/': 'BookingController.getAll',
   'GET /booking/:id': 'BookingController.get',
   'POST /booking/': 'BookingController.create',
+  'POST /booking/:id/createPassenger/': 'BookingController.createPassenger',
+  'POST /booking/:id/assignPassenger/:pd': 'BookingController.assignPassenger',
   'PUT /booking/:id': 'BookingController.update',
   'DELETE /booking/:id': 'BookingController.destroy',
   // Customer
   'GET /customer/': 'CustomerController.getAll',
   'GET /customer/:id': 'CustomerController.get',
   'POST /customer/': 'CustomerController.create',
+  'POST /customer/:id/bookPackage/:pk': 'CustomerController.bookPackage',
   'PUT /customer/:id': 'CustomerController.update',
   'DELETE /customer/:id': 'CustomerController.destroy',
   // Insurance

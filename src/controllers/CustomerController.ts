@@ -66,12 +66,30 @@ const CustomerController = () => {
     }
   };
 
+  const bookPackage = async (req, res) => {
+    try {
+      const booking = await customerService().bookPackage(
+        req.params.id,
+        req.params.pk,
+        req.body,
+      );
+      if (!booking) {
+        return res.status(400).json({ msg: 'Bad Request: Model not found' });
+      }
+      return res.status(201).json({ booking });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
+
   return {
     getAll,
     get,
     update,
     create,
     destroy,
+    bookPackage,
   };
 };
 

@@ -1,6 +1,5 @@
 import Repository from './Repository';
 import Booking from '../models/Booking';
-import User from '../models/User';
 
 export default class BookingRepository implements Repository {
   get(id) {
@@ -12,15 +11,15 @@ export default class BookingRepository implements Repository {
     return Booking.findAll();
   }
 
-  create(data) {
-    const user = User.findByPk(1);
+  create(data, _customer, _package) {
     return Booking.create(
       {
         ...data,
-        user,
+        customer: _customer,
+        package: _package,
       },
       {
-        association: Booking.User,
+        association: [Booking.Customer, Booking.Package],
       },
     );
   }
