@@ -21,7 +21,7 @@ const customerService = () => {
     if (!p) {
       return false;
     }
-    if (await extTControlService().validate(data)) {
+    if (await extTControlService().validate(c, p)) {
       return bookingService().create(data, c, p);
     }
     return false;

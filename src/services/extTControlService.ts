@@ -3,7 +3,7 @@ import ExtTControlRepository from '../repositories/ExtTControlRepository';
 const control = new ExtTControlRepository();
 
 const extTControlService = () => {
-  const validate = (data) => control.validate(data);
+  const validate = (customer, _package) => control.validate(customer, _package);
 
   return {
     validate,
