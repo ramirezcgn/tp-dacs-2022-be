@@ -9,9 +9,10 @@ export default class ExtTControlRepository {
       `${turismoControlApi}/operacion`,
       data,
       {
-        headers: {"content-type": "application/json"}
-    },   
-  
+        headers: {
+          'content-type': 'application/json',
+        },
+      },
     );
     return aprobada;
   }

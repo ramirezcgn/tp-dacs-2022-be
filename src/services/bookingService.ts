@@ -17,22 +17,19 @@ const bookingService = () => {
       return false;
     }
     const p = await passengerService().create(data);
-    return bookingService().assignPassenger(id,p);
+    return bookingService().assignPassenger(id, p);
   };
 
- 
   const assignPassenger = async (id, pd) => {
     const b = await get(id);
     if (!b) {
       return false;
     }
-    
     const p = await passengerService().get(pd);
     if (!p) {
       return false;
     }
-
-    return bookingService().assignPassenger(id,p);
+    return bookingService().assignPassenger(id, p);
   };
 
   return {

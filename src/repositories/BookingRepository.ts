@@ -23,14 +23,14 @@ export default class BookingRepository implements Repository {
       },
     );
   }
+
   assignPassenger(id, passenger) {
     return Booking.create(
       {
         passenger,
-
-
-      }, 
-      { where: { id },
+      },
+      {
+        where: { id },
       },
       {
         association: Booking.Passenger,

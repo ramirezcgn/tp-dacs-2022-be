@@ -17,6 +17,9 @@ const Package = sequelize.define(
     description: {
       type: Sequelize.STRING,
     },
+    image: {
+      type: Sequelize.STRING,
+    },
     price: {
       type: Sequelize.NUMBER,
     },
@@ -26,8 +29,8 @@ const Package = sequelize.define(
     date: {
       type: Sequelize.DATE,
     },
-    image: {
-      type: Sequelize.STRING,
+    validUntil: {
+      type: Sequelize.DATE,
     },
   },
   { tableName },
