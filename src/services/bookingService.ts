@@ -12,24 +12,16 @@ const bookingService = () => {
   const remove = (id) => booking.remove(id);
 
   const createPassenger = async (id, data) => {
-    const b = await get(id);
-    if (!b) {
-      return false;
-    }
     const p = await passengerService().create(data);
-    return bookingService().assignPassenger(id, p);
+    return booking.assignPassenger(id, p);
   };
 
   const assignPassenger = async (id, pd) => {
-    const b = await get(id);
-    if (!b) {
-      return false;
-    }
     const p = await passengerService().get(pd);
     if (!p) {
       return false;
     }
-    return bookingService().assignPassenger(id, p);
+    return booking.assignPassenger(id, p);
   };
 
   return {

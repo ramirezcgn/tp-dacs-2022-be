@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 import axios from 'axios';
 
 const request = () => {

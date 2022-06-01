@@ -12,30 +12,19 @@ export default class BookingRepository implements Repository {
   }
 
   create(data, _customer, _package) {
-    return Booking.create(
-      {
-        ...data,
-        customer: _customer,
-        package: _package,
-      },
-      {
-        association: [Booking.Customer, Booking.Package],
-      },
-    );
+    return Booking.create({
+      ...data,
+      PackageId: _package.id,
+      CustomerId: _customer.id,
+    });
   }
 
-  assignPassenger(id, passenger) {
-    return Booking.create(
-      {
-        passenger,
-      },
-      {
-        where: { id },
-      },
-      {
-        association: Booking.Passenger,
-      },
-    );
+  async assignPassenger(id, passenger) {
+    const booking = await this.get(id);
+    if (!booking) {
+      return false;
+    }
+    return booking.addPassenger(passenger);
   }
 
   update(id, data) {

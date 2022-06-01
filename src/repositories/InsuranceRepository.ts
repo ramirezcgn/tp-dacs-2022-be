@@ -14,15 +14,10 @@ export default class InsuranceRepository implements Repository {
 
   create(data) {
     const user = User.findByPk(1);
-    return Insurance.create(
-      {
-        ...data,
-        user,
-      },
-      {
-        association: Insurance.User,
-      },
-    );
+    return Insurance.create({
+      ...data,
+      UserId: user.id,
+    });
   }
 
   update(id, data) {

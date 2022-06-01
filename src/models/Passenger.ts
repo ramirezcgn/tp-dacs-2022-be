@@ -17,7 +17,7 @@ const Passenger = sequelize.define(
     lastName: {
       type: Sequelize.STRING,
     },
-    dateOfBirh: {
+    dateOfBirth: {
       type: Sequelize.DATE,
     },
   },

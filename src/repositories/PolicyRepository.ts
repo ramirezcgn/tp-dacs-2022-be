@@ -14,15 +14,10 @@ export default class PolicyRepository implements Repository {
 
   create(data) {
     const user = User.findByPk(1);
-    return Policy.create(
-      {
-        ...data,
-        user,
-      },
-      {
-        association: Policy.User,
-      },
-    );
+    return Policy.create({
+      ...data,
+      UserId: user.id,
+    });
   }
 
   update(id, data) {

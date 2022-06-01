@@ -14,15 +14,10 @@ export default class CustomerRepository implements Repository {
 
   create(data) {
     const user = User.findByPk(1);
-    return Customer.create(
-      {
-        ...data,
-        user,
-      },
-      {
-        association: Customer.User,
-      },
-    );
+    return Customer.create({
+      ...data,
+      UserId: user.id,
+    });
   }
 
   update(id, data) {

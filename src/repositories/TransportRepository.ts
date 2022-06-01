@@ -12,15 +12,10 @@ export default class TransportRepository implements Repository {
   }
 
   create(data, _package) {
-    return Transport.create(
-      {
-        ...data,
-        package: _package,
-      },
-      {
-        association: Transport.Package,
-      },
-    );
+    return Transport.create({
+      ...data,
+      PackageId: _package.id,
+    });
   }
 
   update(id, data) {

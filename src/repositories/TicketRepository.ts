@@ -12,15 +12,10 @@ export default class TicketRepository implements Repository {
   }
 
   create(data, _package) {
-    return Ticket.create(
-      {
-        ...data,
-        package: _package,
-      },
-      {
-        association: Ticket.package,
-      },
-    );
+    return Ticket.create({
+      ...data,
+      PackageId: _package.id,
+    });
   }
 
   update(id, data) {

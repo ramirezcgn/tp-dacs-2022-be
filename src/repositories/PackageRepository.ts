@@ -14,15 +14,10 @@ export default class PackageRepository implements Repository {
 
   create(data) {
     const user = User.findByPk(1);
-    return Package.create(
-      {
-        ...data,
-        user,
-      },
-      {
-        association: Package.User,
-      },
-    );
+    return Package.create({
+      ...data,
+      UserId: user.id,
+    });
   }
 
   update(id, data) {

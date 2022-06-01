@@ -36,6 +36,7 @@
   },
   "rules": {
     "no-console":"off",
+    "no-plusplus":"off",
     "arrow-parens": [
       "error",
       "always"

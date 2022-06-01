@@ -12,15 +12,10 @@ export default class AccommodationRepository implements Repository {
   }
 
   create(data, _package) {
-    return Accommodation.create(
-      {
-        ...data,
-        package: _package,
-      },
-      {
-        association: Accommodation.Package,
-      },
-    );
+    return Accommodation.create({
+      ...data,
+      PackageId: _package.id,
+    });
   }
 
   update(id, data) {

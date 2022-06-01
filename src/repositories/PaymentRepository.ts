@@ -14,15 +14,10 @@ export default class PaymentRepository implements Repository {
 
   create(data) {
     const user = User.findByPk(1);
-    return Payment.create(
-      {
-        ...data,
-        user,
-      },
-      {
-        association: Payment.User,
-      },
-    );
+    return Payment.create({
+      ...data,
+      UserId: user.id,
+    });
   }
 
   update(id, data) {

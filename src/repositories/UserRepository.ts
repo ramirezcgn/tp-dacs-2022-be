@@ -13,15 +13,10 @@ export default class UserRepository implements Repository {
 
   create(data) {
     const user = User.findByPk(1);
-    return User.create(
-      {
-        ...data,
-        user,
-      },
-      {
-        association: User.User,
-      },
-    );
+    return User.create({
+      ...data,
+      UserId: user.id,
+    });
   }
 
   update(id, data) {

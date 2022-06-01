@@ -13,18 +13,18 @@ const packageService = () => {
   const update = (id, data) => _package.update(id, data);
   const remove = (id) => _package.remove(id);
 
-  const assignTicket = (id, data) => {
-    const p = _package.get(id);
+  const assignTicket = async (id, data) => {
+    const p = await _package.get(id);
     return ticketService().create(data, p);
   };
 
-  const assignAccommodation = (id, data) => {
-    const a = _package.get(id);
+  const assignAccommodation = async (id, data) => {
+    const a = await _package.get(id);
     return accommodationService().create(data, a);
   };
 
-  const assignTransport = (id, data) => {
-    const t = _package.get(id);
+  const assignTransport = async (id, data) => {
+    const t = await _package.get(id);
     return transportService().assignTransport(data, t);
   };
 

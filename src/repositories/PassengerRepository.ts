@@ -14,15 +14,10 @@ export default class PassengerRepository implements Repository {
 
   create(data) {
     const user = User.findByPk(1);
-    return Passenger.create(
-      {
-        ...data,
-        user,
-      },
-      {
-        association: Passenger.User,
-      },
-    );
+    return Passenger.create({
+      ...data,
+      UserId: user.id,
+    });
   }
 
   update(id, data) {
