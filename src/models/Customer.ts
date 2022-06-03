@@ -22,6 +22,9 @@ const Customer = sequelize.define(
     dateOfBirth: {
       type: Sequelize.DATE,
     },
+    email: {
+      type: Sequelize.STRING,
+    },
   },
   { tableName },
 );

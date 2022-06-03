@@ -83,6 +83,16 @@ const CustomerController = () => {
     }
   };
 
+  const sendAdvertising = async (req, res) => {
+    try {
+      await customerService().sendAdvertising();
+      return res.status(200).json({ msg: 'Successfully email sent' });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
+
   return {
     getAll,
     get,
@@ -90,6 +100,7 @@ const CustomerController = () => {
     create,
     destroy,
     bookPackage,
+    sendAdvertising,
   };
 };
 

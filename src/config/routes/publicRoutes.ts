@@ -25,6 +25,7 @@ const publicRoutes = {
   'POST /customer/:id/bookPackage/:pk': 'CustomerController.bookPackage',
   'PUT /customer/:id': 'CustomerController.update',
   'DELETE /customer/:id': 'CustomerController.destroy',
+  'POST /customer/sendAdvertising/': 'CustomerController.sendAdvertising',
   // Insurance
   'GET /insurance/': 'InsuranceController.getAll',
   'GET /insurance/:id': 'InsuranceController.get',

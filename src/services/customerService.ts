@@ -2,6 +2,7 @@ import CustomerRepository from '../repositories/CustomerRepository';
 import bookingService from './bookingService';
 import extTControlService from './extTControlService';
 import packageService from './packageService';
+import emailService from './emailService';
 
 const customer = new CustomerRepository();
 
@@ -27,6 +28,19 @@ const customerService = () => {
     return false;
   };
 
+  const sendAdvertising = async () => {
+    const customers = await customer.getAll(0, 100);
+    const result = customers.map(({ email }) =>
+      emailService().sendEmail(
+        'info@superblog.com',
+        email,
+        'We miss you!',
+        'Please comeback!',
+      ),
+    );
+    return Promise.all(result);
+  };
+
   return {
     get,
     getAll,
@@ -34,6 +48,7 @@ const customerService = () => {
     update,
     remove,
     bookPackage,
+    sendAdvertising,
   };
 };
 
