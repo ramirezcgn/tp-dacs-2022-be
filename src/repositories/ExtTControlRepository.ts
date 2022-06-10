@@ -24,6 +24,7 @@ export default class ExtTControlRepository {
           },
         ),
       10,
+      1000,
       (res) => {
         const { status, data } = res;
         return status === 201 && data.aprobada;

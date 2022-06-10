@@ -45,7 +45,7 @@ const request = () => {
     return null;
   };
 
-  const withRetry: any = (callback, numberOfRetry, verify?) =>
+  const withRetry: any = (callback, numberOfRetry, delay, verify?) =>
     new Promise((resolve, reject) => {
       let attempts = 1;
       const fetchRetry = (number) =>
@@ -59,11 +59,11 @@ const request = () => {
               throw reject(Error('Error in getting http data'));
             } else {
               console.log(`Retry again: Got back ${status}`);
-              console.log(`With delay ${attempts * 3000}`);
+              console.log(`With delay ${attempts * delay}`);
               setTimeout(() => {
                 attempts++;
                 fetchRetry(number - 1);
-              }, attempts * 3000);
+              }, attempts * delay);
             }
             return null;
           })
@@ -74,7 +74,7 @@ const request = () => {
               setTimeout(() => {
                 attempts++;
                 fetchRetry(number - 1);
-              }, attempts * 3000);
+              }, attempts * delay);
             }
           });
       fetchRetry(numberOfRetry);
