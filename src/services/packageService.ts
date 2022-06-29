@@ -2,7 +2,6 @@ import PackageRepository from '../repositories/PackageRepository';
 import accommodationService from './accommodationService';
 import ticketService from './ticketService';
 import transportService from './transportService';
-import emailService from './emailService';
 
 const _package = new PackageRepository();
 
@@ -28,15 +27,6 @@ const packageService = () => {
     return transportService().assignTransport(data, t);
   };
 
-  const testEmailService = () => {
-    emailService().sendEmail(
-      'info@superblog.com',
-      'asdfasdf@sadfasdf.com',
-      'We miss you!',
-      'Please comeback!',
-    );
-  };
-
   return {
     get,
     getAll,
@@ -46,7 +36,6 @@ const packageService = () => {
     assignAccommodation,
     assignTicket,
     assignTransport,
-    testEmailService,
   };
 };
 

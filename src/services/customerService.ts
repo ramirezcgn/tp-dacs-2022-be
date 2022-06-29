@@ -31,7 +31,7 @@ const customerService = () => {
   const sendAdvertising = async () => {
     const customers = await customer.getAll(0, 100);
     const result = customers.map(({ email }) =>
-      emailService().sendEmail(
+      emailService.batchSend(
         'info@superblog.com',
         email,
         'We miss you!',

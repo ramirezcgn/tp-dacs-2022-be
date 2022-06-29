@@ -3,23 +3,43 @@ import config from '../config';
 
 const { redisServer } = config;
 
-export default async function emailStreamProducer() {
-  const client = createClient({
-    url: redisServer,
-    socket: {
-      reconnectStrategy: (retries) => Math.min(retries * 50, 500),
-    },
-  });
-  await client.connect();
+class EmailStreamProvider {
+  client: any;
+  ready?: Promise<any>;
 
-  const logResult = async () => {
+  constructor() {
+    this.client = createClient({
+      url: redisServer,
+      socket: {
+        reconnectStrategy: (retries) => Math.min(retries * 50, 500),
+      },
+    });
+  }
+
+  connect() {
+    try {
+      if (!this.ready) {
+        this.ready = this.client.connect();
+      }
+      return this.ready;
+    } catch (e) {
+      console.log('Create sender fail!');
+    }
+    return null;
+  }
+
+  private async logResult() {
     console.log(
-      `Number of email in queue: ${await client.xLen('mailing-stream')}.`,
+      `Number of email in queue: ${await this.client.xLen('mailing-stream')}.`,
     );
-  };
+  }
 
-  const addEmailQueue = async (from, to, subject, body, plain) => {
-    await client.xAdd('mailing-stream', '*', {
+  async addEmailQueue(from, to, subject, body, plain) {
+    if (!this.ready) {
+      return;
+    }
+    await this.ready;
+    await this.client.xAdd('mailing-stream', '*', {
       message: JSON.stringify({
         from,
         to,
@@ -28,15 +48,16 @@ export default async function emailStreamProducer() {
         plain,
       }),
     });
-    await logResult();
-  };
+    await this.logResult();
+  }
 
-  const quit = async () => {
-    await client.quit();
-  };
-
-  return {
-    addEmailQueue,
-    quit,
-  };
+  async quit() {
+    if (!this.ready) {
+      return;
+    }
+    await this.ready;
+    await this.client.quit();
+  }
 }
+
+export default new EmailStreamProvider();

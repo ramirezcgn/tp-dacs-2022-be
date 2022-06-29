@@ -1,9 +1,10 @@
 const publicRoutes = {
   // Auth
-  'POST /user': 'AuthController.register',
-  'POST /register': 'AuthController.register',
+  'POST /signup': 'AuthController.signup',
   'POST /login': 'AuthController.login',
   'POST /validate': 'AuthController.validate',
+  'POST /forgot-password': 'AuthController.forgotPassword',
+  'POST /reset-password': 'AuthController.resetPassword',
   // Accomodation
   'GET /accommodation/': 'AccommodationController.getAll',
   'GET /accommodation/:id': 'AccommodationController.get',
@@ -42,7 +43,6 @@ const publicRoutes = {
   'POST /package/:id/assignAccommodation':
     'PackageController.assignAccommodation',
   'POST /package/:id/assignTicket': 'PackageController.assignTicket',
-  'POST /package/testEmailService/': 'PackageController.testEmailService',
   // Passenger
   'GET /passenger/': 'PassengerController.getAll',
   'GET /passenger/:id': 'PassengerController.get',

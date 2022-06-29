@@ -6,17 +6,29 @@ export default class UserRepository implements Repository {
     return User.findByPk(id);
   }
 
+  getByName(username) {
+    return User.findOne({
+      where: {
+        username,
+      },
+    });
+  }
+
+  getByEmail(email) {
+    return User.findOne({
+      where: {
+        email,
+      },
+    });
+  }
+
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   getAll(page: number, limit: number) {
     return User.findAll();
   }
 
-  create(data) {
-    const user = User.findByPk(1);
-    return User.create({
-      ...data,
-      UserId: user.id,
-    });
+  async create(data) {
+    return User.create(data);
   }
 
   update(id, data) {

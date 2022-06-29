@@ -32,12 +32,16 @@
       "jest",
       "node"
     ],
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "_constants": ["constants"],
+      "_constants/*": ["constants/*"]
+    },
+    "rootDirs": ["./src"]
   },
   "ts-node": {
     "esm": true
   },
   "include": ["src", "src/**/*.json"],
-  "exclude": ["node_modules"],
-  "rootDirs": ["./src"]
+  "exclude": ["node_modules"]
 }

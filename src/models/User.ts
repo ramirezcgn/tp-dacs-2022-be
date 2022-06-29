@@ -16,8 +16,9 @@ const tableName = 'users';
 const User = sequelize.define(
   'User',
   {
-    name: {
+    username: {
       type: Sequelize.STRING,
+      allowNull: false,
       unique: true,
     },
     firstName: {
@@ -28,11 +29,21 @@ const User = sequelize.define(
     },
     email: {
       type: Sequelize.STRING,
+      allowNull: false,
       unique: true,
     },
     password: {
       type: Sequelize.STRING,
+      allowNull: false,
     },
+  },
+  {
+    indexes: [
+      {
+        unique: false,
+        fields: ['username', 'email'],
+      },
+    ],
   },
   { hooks, tableName },
 );

@@ -1,4 +1,4 @@
-import JWTService from '../services/authService';
+import authService from '../services/authService';
 
 // usually: "Authorization: Bearer [token]" or "token: [token]"
 export default (req, res, next) => {
@@ -30,7 +30,7 @@ export default (req, res, next) => {
     return res.status(401).json({ msg: 'No Authorization was found' });
   }
 
-  return JWTService().verify(tokenToVerify, (err, thisToken) => {
+  return authService.verify(tokenToVerify, (err, thisToken) => {
     if (err) return res.status(401).json({ err });
     req.token = thisToken;
     return next();

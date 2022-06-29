@@ -76,6 +76,11 @@ const mapRoutes = async (routes, pathToController, middlewareGenerals = []) => {
       break;
     }
 
+    if (!(controllerMethod in contr)) {
+      console.log(`Error: ${controllerMethod} not found in ${controller}!`);
+      break;
+    }
+
     router.route(myPath)[requestMethod](middlewares, contr[controllerMethod]);
   }
 

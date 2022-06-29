@@ -5,7 +5,7 @@ export default () =>
   User.bulkCreate(
     [
       {
-        name: 'admin',
+        username: 'admin',
         firstName: 'John',
         lastName: 'Doe',
         email: 'john-doe@admin.com',
@@ -13,7 +13,7 @@ export default () =>
       },
     ],
     {
-      fields: ['name', 'firstName', 'lastName', 'email', 'password'],
+      fields: ['username', 'firstName', 'lastName', 'email', 'password'],
       ignoreDuplicates: true,
     },
   );
