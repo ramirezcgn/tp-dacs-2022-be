@@ -17,7 +17,10 @@ if (process.env.REDIS_HOST) {
   redisHost = process.env.REDIS_HOST;
 }
 
-const turismoControlHost = 'turismo-control';
+let turismoControlHost = 'turismo_control';
+if (process.env.TURISMO_CONTROL_HOST) {
+  turismoControlHost = process.env.TURISMO_CONTROL_HOST;
+}
 
 const config = {
   migrate: false,
@@ -26,7 +29,7 @@ const config = {
   port: process.env.PORT || '3001',
   externalApi: `http://${externalHost}:4000/api`,
   redisServer: `redis://${redisHost}:6379`,
-  turismoControlApi: `http://${turismoControlHost}:8080`,
+  turismoControlApi: `http://${turismoControlHost}:5000`,
 };
 
 export default config;
