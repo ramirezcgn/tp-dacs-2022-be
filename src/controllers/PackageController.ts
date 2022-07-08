@@ -9,7 +9,7 @@ const PackageController = () => {
           .status(400)
           .json({ message: 'Bad Request: Model not found' });
       }
-      return res.status(201).json({ _package });
+      return res.status(201).json({ package: _package });
     } catch (err) {
       console.error(err);
       return res.status(500).json({ message: 'Internal server error' });
@@ -39,7 +39,7 @@ const PackageController = () => {
           .status(400)
           .json({ message: 'Bad Request: Model not found' });
       }
-      return res.status(200).json({ _package });
+      return res.status(200).json({ package: _package });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
@@ -54,7 +54,7 @@ const PackageController = () => {
           .status(400)
           .json({ message: 'Bad Request: Model not found' });
       }
-      return res.status(200).json({ _package });
+      return res.status(200).json({ pacakge: _package });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
