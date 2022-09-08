@@ -1,22 +1,22 @@
 import ticketService from '../services/ticketService';
 
-const TicketController = () => {
-  // const create = async (req, res) => {
-  //   try {
-  //     const ticket = await ticketService().create(req.body);
-  //     if (!ticket) {
-  //       return res.status(400).json({ message: 'Bad Request: Model not found' });
-  //     }
-  //     return res.status(201).json({ ticket });
-  //   } catch (err) {
-  //     console.error(err);
-  //     return res.status(500).json({ message: 'Internal server error' });
-  //   }
-  // };
-
-  const getAll = async (req, res) => {
+export default class TicketController {
+  async create(req, res) {
     try {
-      const tickets = await ticketService().getAll(0, 10);
+      const ticket = await ticketService.create(req.body, null);
+      if (!ticket) {
+        return res.status(400).json({ message: 'Bad Request: Model not found' });
+      }
+      return res.status(201).json({ ticket });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+  }
+
+  async getAll(_req, res) {
+    try {
+      const tickets = await ticketService.getAll(0, 10);
       if (!tickets) {
         return res
           .status(400)
@@ -27,11 +27,11 @@ const TicketController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const get = async (req, res) => {
+  async get(req, res) {
     try {
-      const ticket = await ticketService().get(req.params.id);
+      const ticket = await ticketService.get(req.params.id);
       if (!ticket) {
         return res
           .status(400)
@@ -42,11 +42,11 @@ const TicketController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const update = async (req, res) => {
+  async update(req, res) {
     try {
-      const ticket = await ticketService().update(req.params.id, req.body);
+      const ticket = await ticketService.update(req.params.id, req.body);
       if (!ticket) {
         return res
           .status(400)
@@ -57,11 +57,11 @@ const TicketController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const destroy = async (req, res) => {
+  async destroy(req, res) {
     try {
-      const model = await ticketService().remove(req.params.id);
+      const model = await ticketService.remove(req.params.id);
       if (!model) {
         return res
           .status(400)
@@ -72,15 +72,5 @@ const TicketController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
-
-  return {
-    getAll,
-    get,
-    update,
-    //create,
-    destroy,
-  };
-};
-
-export default TicketController;
+  }
+}

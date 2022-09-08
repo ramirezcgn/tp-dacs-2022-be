@@ -2,20 +2,26 @@ import PassengerRepository from '../repositories/PassengerRepository';
 
 const passenger = new PassengerRepository();
 
-const passengerService = () => {
-  const get = (id) => passenger.get(id);
-  const getAll = (page, limit) => passenger.getAll(page, limit);
-  const create = (data) => passenger.create(data);
-  const update = (id, data) => passenger.update(id, data);
-  const remove = (id) => passenger.remove(id);
+class PassengerService {
+  get(id) {
+    return passenger.get(id);
+  }
 
-  return {
-    get,
-    getAll,
-    create,
-    update,
-    remove,
-  };
-};
+  getAll(page, limit) {
+    return passenger.getAll(page, limit);
+  }
 
-export default passengerService;
+  create(data) {
+    return passenger.create(data);
+  }
+
+  update(id, data) {
+    return passenger.update(id, data);
+  }
+
+  remove(id) {
+    return passenger.remove(id);
+  }
+}
+
+export default new PassengerService();

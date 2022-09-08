@@ -1,9 +1,9 @@
 import customerService from '../services/customerService';
 
-const CustomerController = () => {
-  const create = async (req, res) => {
+export default class CustomerController {
+  async create(req, res) {
     try {
-      const customer = await customerService().create(req.body);
+      const customer = await customerService.create(req.body);
       if (!customer) {
         return res
           .status(400)
@@ -14,11 +14,11 @@ const CustomerController = () => {
       console.error(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const getAll = async (req, res) => {
+  async getAll(_req, res) {
     try {
-      const customers = await customerService().getAll(0, 10);
+      const customers = await customerService.getAll(0, 10);
       if (!customers) {
         return res
           .status(400)
@@ -29,11 +29,11 @@ const CustomerController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const get = async (req, res) => {
+  async get(req, res) {
     try {
-      const customer = await customerService().get(req.params.id);
+      const customer = await customerService.get(req.params.id);
       if (!customer) {
         return res
           .status(400)
@@ -44,11 +44,11 @@ const CustomerController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const update = async (req, res) => {
+  async update(req, res) {
     try {
-      const customer = await customerService().update(req.params.id, req.body);
+      const customer = await customerService.update(req.params.id, req.body);
       if (!customer) {
         return res
           .status(400)
@@ -59,11 +59,11 @@ const CustomerController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const destroy = async (req, res) => {
+  async destroy(req, res) {
     try {
-      const model = await customerService().remove(req.params.id);
+      const model = await customerService.remove(req.params.id);
       if (!model) {
         return res
           .status(400)
@@ -74,11 +74,11 @@ const CustomerController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const bookPackage = async (req, res) => {
+  async bookPackage(req, res) {
     try {
-      const booking = await customerService().bookPackage(
+      const booking = await customerService.bookPackage(
         req.params.id,
         req.params.pk,
         req.body,
@@ -93,27 +93,15 @@ const CustomerController = () => {
       console.error(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const sendAdvertising = async (req, res) => {
+  async sendAdvertising(req, res) {
     try {
-      await customerService().sendAdvertising();
+      await customerService.sendAdvertising();
       return res.status(200).json({ message: 'Successfully email sent' });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
-
-  return {
-    getAll,
-    get,
-    update,
-    create,
-    destroy,
-    bookPackage,
-    sendAdvertising,
-  };
-};
-
-export default CustomerController;
+  }
+}

@@ -2,16 +2,18 @@ import ExtTranspRepository from '../repositories/ExtTranspRepository';
 
 const transp = new ExtTranspRepository();
 
-const extTransportService = () => {
-  const get = (id) => transp.get(id);
-  const getAll = () => transp.getAll();
-  const select = (id, places) => transp.select(id, places);
+class ExtTransportService {
+  get(id) {
+    return transp.get(id);
+  }
 
-  return {
-    get,
-    getAll,
-    select,
-  };
-};
+  getAll() {
+    return transp.getAll();
+  }
 
-export default extTransportService;
+  select(id, places) {
+    return transp.select(id, places);
+  }
+}
+
+export default new ExtTransportService();

@@ -1,19 +1,14 @@
 import bcrypt from 'bcrypt';
 
-const bcryptService = () => {
-  const password = (user) => {
+class BcryptService {
+  password(user) {
     const salt = bcrypt.genSaltSync();
-    const hash = bcrypt.hashSync(user.password, salt);
+    return bcrypt.hashSync(user.password, salt);
+  }
 
-    return hash;
-  };
+  comparePassword(pw, hash) {
+    return bcrypt.compareSync(pw, hash);
+  }
+}
 
-  const comparePassword = (pw, hash) => bcrypt.compareSync(pw, hash);
-
-  return {
-    password,
-    comparePassword,
-  };
-};
-
-export default bcryptService;
+export default new BcryptService();

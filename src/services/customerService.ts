@@ -6,29 +6,43 @@ import emailService from './emailService';
 
 const customer = new CustomerRepository();
 
-const customerService = () => {
-  const get = (id) => customer.get(id);
-  const getAll = (page, limit) => customer.getAll(page, limit);
-  const create = (data) => customer.create(data);
-  const update = (id, data) => customer.update(id, data);
-  const remove = (id) => customer.remove(id);
+class CustomerService {
+  get(id) {
+    return customer.get(id);
+  }
 
-  const bookPackage = async (id, pk, data) => {
-    const c = await get(id);
+  getAll(page, limit) {
+    return customer.getAll(page, limit);
+  }
+
+  create(data) {
+    return customer.create(data);
+  }
+
+  update(id, data) {
+    return customer.update(id, data);
+  }
+
+  remove(id) {
+    return customer.remove(id);
+  }
+
+  async bookPackage(id, pk, data) {
+    const c = await this.get(id);
     if (!c) {
       return false;
     }
-    const p = await packageService().get(pk);
+    const p = await packageService.get(pk);
     if (!p) {
       return false;
     }
-    if (await extTControlService().validate(c, p)) {
-      return bookingService().create(data, c, p);
+    if (await extTControlService.validate(c, p)) {
+      return bookingService.create(data, c, p);
     }
     return false;
-  };
+  }
 
-  const sendAdvertising = async () => {
+  async sendAdvertising() {
     const customers = await customer.getAll(0, 100);
     const result = customers.map(({ email }) =>
       emailService.batchSend(
@@ -39,17 +53,7 @@ const customerService = () => {
       ),
     );
     return Promise.all(result);
-  };
+  }
+}
 
-  return {
-    get,
-    getAll,
-    create,
-    update,
-    remove,
-    bookPackage,
-    sendAdvertising,
-  };
-};
-
-export default customerService;
+export default new CustomerService();

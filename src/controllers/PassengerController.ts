@@ -1,9 +1,9 @@
 import passengerService from '../services/passengerService';
 
-const PassengerController = () => {
-  const create = async (req, res) => {
+export default class PassengerController {
+  async create(req, res) {
     try {
-      const passenger = await passengerService().create(req.body);
+      const passenger = await passengerService.create(req.body);
       if (!passenger) {
         return res
           .status(400)
@@ -14,11 +14,11 @@ const PassengerController = () => {
       console.error(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const getAll = async (req, res) => {
+  async getAll(_req, res) {
     try {
-      const passengers = await passengerService().getAll(0, 10);
+      const passengers = await passengerService.getAll(0, 10);
       if (!passengers) {
         return res
           .status(400)
@@ -29,11 +29,11 @@ const PassengerController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const get = async (req, res) => {
+  async get(req, res) {
     try {
-      const passenger = await passengerService().get(req.params.id);
+      const passenger = await passengerService.get(req.params.id);
       if (!passenger) {
         return res
           .status(400)
@@ -44,11 +44,11 @@ const PassengerController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const update = async (req, res) => {
+  async update(req, res) {
     try {
-      const passenger = await passengerService().update(
+      const passenger = await passengerService.update(
         req.params.id,
         req.body,
       );
@@ -62,11 +62,11 @@ const PassengerController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const destroy = async (req, res) => {
+  async destroy(req, res) {
     try {
-      const model = await passengerService().remove(req.params.id);
+      const model = await passengerService.remove(req.params.id);
       if (!model) {
         return res
           .status(400)
@@ -77,15 +77,5 @@ const PassengerController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
-
-  return {
-    getAll,
-    get,
-    update,
-    create,
-    destroy,
-  };
-};
-
-export default PassengerController;
+  }
+}

@@ -5,38 +5,41 @@ import transportService from './transportService';
 
 const _package = new PackageRepository();
 
-const packageService = () => {
-  const get = (id) => _package.get(id);
-  const getAll = (page, limit) => _package.getAll(page, limit);
-  const create = (data) => _package.create(data);
-  const update = (id, data) => _package.update(id, data);
-  const remove = (id) => _package.remove(id);
+class PackageService {
+  get(id) {
+    return _package.get(id);
+  }
 
-  const assignTicket = async (id, data) => {
+  getAll(page, limit) {
+    return _package.getAll(page, limit);
+  }
+
+  create(data) {
+    return _package.create(data);
+  }
+
+  update(id, data) {
+    return _package.update(id, data);
+  }
+
+  remove(id) {
+    return _package.remove(id);
+  }
+
+  async assignTicket(id, data) {
     const p = await _package.get(id);
-    return ticketService().create(data, p);
-  };
+    return ticketService.create(data, p);
+  }
 
-  const assignAccommodation = async (id, data) => {
+  async assignAccommodation(id, data) {
     const a = await _package.get(id);
-    return accommodationService().create(data, a);
-  };
+    return accommodationService.create(data, a);
+  }
 
-  const assignTransport = async (id, data) => {
+  async assignTransport(id, data) {
     const t = await _package.get(id);
-    return transportService().assignTransport(data, t);
-  };
+    return transportService.assignTransport(data, t);
+  }
+}
 
-  return {
-    get,
-    getAll,
-    create,
-    update,
-    remove,
-    assignAccommodation,
-    assignTicket,
-    assignTransport,
-  };
-};
-
-export default packageService;
+export default new PackageService();

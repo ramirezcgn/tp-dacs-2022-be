@@ -60,7 +60,7 @@ export default class AuthController {
       const { username, password } = req.body;
       try {
         const user = await userService.getByName(username);
-        if (!user || bcryptService().comparePassword(password, user.password)) {
+        if (!user || bcryptService.comparePassword(password, user.password)) {
           return res.status(401).json({
             errors: true,
             message: 'Incorrect login details',

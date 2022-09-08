@@ -2,16 +2,18 @@ import ExtShowRepository from '../repositories/ExtShowRepository';
 
 const show = new ExtShowRepository();
 
-const extTicketService = () => {
-  const get = (id) => show.get(id);
-  const getAll = () => show.getAll();
-  const select = (id, places) => show.select(id, places);
+class ExtTicketService {
+  get(id) {
+    return show.get(id);
+  }
 
-  return {
-    get,
-    getAll,
-    select,
-  };
-};
+  getAll() {
+    return show.getAll();
+  }
 
-export default extTicketService;
+  select(id, places) {
+    return show.select(id, places);
+  }
+}
+
+export default new ExtTicketService();

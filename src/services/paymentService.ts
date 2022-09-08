@@ -2,20 +2,26 @@ import PaymentRepository from '../repositories/PaymentRepository';
 
 const payment = new PaymentRepository();
 
-const paymentService = () => {
-  const get = (id) => payment.get(id);
-  const getAll = (page, limit) => payment.getAll(page, limit);
-  const create = (data) => payment.create(data);
-  const update = (id, data) => payment.update(id, data);
-  const remove = (id) => payment.remove(id);
+class PaymentService {
+  get(id) {
+    return payment.get(id);
+  }
 
-  return {
-    get,
-    getAll,
-    create,
-    update,
-    remove,
-  };
-};
+  getAll(page, limit) {
+    return payment.getAll(page, limit);
+  }
 
-export default paymentService;
+  create(data) {
+    return payment.create(data);
+  }
+
+  update(id, data) {
+    return payment.update(id, data);
+  }
+
+  remove(id) {
+    return payment.remove(id);
+  }
+}
+
+export default new PaymentService();

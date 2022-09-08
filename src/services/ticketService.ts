@@ -1,22 +1,27 @@
 import TicketRepository from '../repositories/TicketRepository';
-//import emailService from './email.service';
 
 const ticket = new TicketRepository();
 
-const ticketService = () => {
-  const get = (id) => ticket.get(id);
-  const getAll = (page, limit) => ticket.getAll(page, limit);
-  const create = (data, _package) => ticket.create(data, _package);
-  const update = (id, data) => ticket.update(id, data);
-  const remove = (id) => ticket.remove(id);
+class TicketService {
+  get(id) {
+    return ticket.get(id);
+  }
 
-  return {
-    get,
-    getAll,
-    create,
-    update,
-    remove,
-  };
-};
+  getAll(page, limit) {
+    return ticket.getAll(page, limit);
+  }
 
-export default ticketService;
+  create(data, _package) {
+    return ticket.create(data, _package);
+  }
+
+  update(id, data) {
+    return ticket.update(id, data);
+  }
+
+  remove(id) {
+    return ticket.remove(id);
+  }
+}
+
+export default new TicketService();

@@ -2,16 +2,18 @@ import ExtStayRepository from '../repositories/ExtStayRepository';
 
 const stay = new ExtStayRepository();
 
-const extAccommodationService = () => {
-  const get = (id) => stay.get(id);
-  const getAll = () => stay.getAll();
-  const select = (id, places) => stay.select(id, places);
+class ExtAccommodationService {
+  get(id) {
+    return stay.get(id);
+  }
 
-  return {
-    get,
-    getAll,
-    select,
-  };
-};
+  getAll() {
+    return stay.getAll();
+  }
 
-export default extAccommodationService;
+  select(id, places) {
+    return stay.select(id, places);
+  }
+}
+
+export default new ExtAccommodationService();

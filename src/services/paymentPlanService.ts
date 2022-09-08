@@ -2,20 +2,26 @@ import PaymentPlanRepository from '../repositories/PaymentPlanRepository';
 
 const paymentPlan = new PaymentPlanRepository();
 
-const paymentPlanService = () => {
-  const get = (id) => paymentPlan.get(id);
-  const getAll = (page, limit) => paymentPlan.getAll(page, limit);
-  const create = (data) => paymentPlan.create(data);
-  const update = (id, data) => paymentPlan.update(id, data);
-  const remove = (id) => paymentPlan.remove(id);
+class PaymentPlanService {
+  get(id) {
+    return paymentPlan.get(id);
+  }
 
-  return {
-    get,
-    getAll,
-    create,
-    update,
-    remove,
-  };
-};
+  getAll(page, limit) {
+    return paymentPlan.getAll(page, limit);
+  }
 
-export default paymentPlanService;
+  create(data) {
+    return paymentPlan.create(data);
+  }
+
+  update(id, data) {
+    return paymentPlan.update(id, data);
+  }
+
+  remove(id) {
+    return paymentPlan.remove(id);
+  }
+}
+
+export default new PaymentPlanService();

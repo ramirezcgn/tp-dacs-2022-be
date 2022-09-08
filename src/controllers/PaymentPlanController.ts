@@ -1,9 +1,9 @@
 import paymentPlanService from '../services/paymentPlanService';
 
-const PaymentPlanController = () => {
-  const create = async (req, res) => {
+export default class PaymentPlanController {
+  async create(req, res) {
     try {
-      const paymentPlan = await paymentPlanService().create(req.body);
+      const paymentPlan = await paymentPlanService.create(req.body);
       if (!paymentPlan) {
         return res
           .status(400)
@@ -14,11 +14,11 @@ const PaymentPlanController = () => {
       console.error(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const getAll = async (req, res) => {
+  async getAll(_req, res) {
     try {
-      const paymentPlans = await paymentPlanService().getAll(0, 10);
+      const paymentPlans = await paymentPlanService.getAll(0, 10);
       if (!paymentPlans) {
         return res
           .status(400)
@@ -29,11 +29,11 @@ const PaymentPlanController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const get = async (req, res) => {
+  async get(req, res) {
     try {
-      const paymentPlan = await paymentPlanService().get(req.params.id);
+      const paymentPlan = await paymentPlanService.get(req.params.id);
       if (!paymentPlan) {
         return res
           .status(400)
@@ -44,11 +44,11 @@ const PaymentPlanController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const update = async (req, res) => {
+  async update(req, res) {
     try {
-      const paymentPlan = await paymentPlanService().update(
+      const paymentPlan = await paymentPlanService.update(
         req.params.id,
         req.body,
       );
@@ -62,11 +62,11 @@ const PaymentPlanController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const destroy = async (req, res) => {
+  async destroy(req, res) {
     try {
-      const model = await paymentPlanService().remove(req.params.id);
+      const model = await paymentPlanService.remove(req.params.id);
       if (!model) {
         return res
           .status(400)
@@ -77,15 +77,5 @@ const PaymentPlanController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
-
-  return {
-    getAll,
-    get,
-    update,
-    create,
-    destroy,
-  };
-};
-
-export default PaymentPlanController;
+  }
+}

@@ -2,20 +2,26 @@ import PolicyRepository from '../repositories/PolicyRepository';
 
 const policy = new PolicyRepository();
 
-const policyService = () => {
-  const get = (id) => policy.get(id);
-  const getAll = (page, limit) => policy.getAll(page, limit);
-  const create = (data) => policy.create(data);
-  const update = (id, data) => policy.update(id, data);
-  const remove = (id) => policy.remove(id);
+class PolicyService {
+  get(id) {
+    return policy.get(id);
+  }
 
-  return {
-    get,
-    getAll,
-    create,
-    update,
-    remove,
-  };
-};
+  getAll(page, limit) {
+    return policy.getAll(page, limit);
+  }
 
-export default policyService;
+  create(data) {
+    return policy.create(data);
+  }
+
+  update(id, data) {
+    return policy.update(id, data);
+  }
+
+  remove(id) {
+    return policy.remove(id);
+  }
+}
+
+export default new PolicyService();

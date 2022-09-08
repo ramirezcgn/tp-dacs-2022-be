@@ -1,9 +1,9 @@
 import bookingService from '../services/bookingService';
 
-const BookingController = () => {
-  /*const create = async (req, res) => {
+export default class BookingController {
+  async create(req, res) {
     try {
-      const booking = await bookingService().create(req.body);
+      const booking = await bookingService.create(req.body, null, null);
       if (!booking) {
         return res.status(400).json({ message: 'Bad Request: Model not found' });
       }
@@ -12,11 +12,11 @@ const BookingController = () => {
       console.error(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };*/
+  }
 
-  const getAll = async (req, res) => {
+  async getAll(_req, res) {
     try {
-      const bookings = await bookingService().getAll(0, 10);
+      const bookings = await bookingService.getAll(0, 10);
       if (!bookings) {
         return res
           .status(400)
@@ -27,11 +27,11 @@ const BookingController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const get = async (req, res) => {
+  async get(req, res) {
     try {
-      const booking = await bookingService().get(req.params.id);
+      const booking = await bookingService.get(req.params.id);
       if (!booking) {
         return res
           .status(400)
@@ -42,11 +42,11 @@ const BookingController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const update = async (req, res) => {
+  async update(req, res) {
     try {
-      const booking = await bookingService().update(req.params.id, req.body);
+      const booking = await bookingService.update(req.params.id, req.body);
       if (!booking) {
         return res
           .status(400)
@@ -57,11 +57,11 @@ const BookingController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const destroy = async (req, res) => {
+  async destroy(req, res) {
     try {
-      const model = await bookingService().remove(req.params.id);
+      const model = await bookingService.remove(req.params.id);
       if (!model) {
         return res
           .status(400)
@@ -72,11 +72,11 @@ const BookingController = () => {
       console.log(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const createPassenger = async (req, res) => {
+  async createPassenger(req, res) {
     try {
-      const passenger = await bookingService().createPassenger(
+      const passenger = await bookingService.createPassenger(
         req.params.id,
         req.body,
       );
@@ -90,11 +90,11 @@ const BookingController = () => {
       console.error(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
+  }
 
-  const assignPassenger = async (req, res) => {
+  async assignPassenger(req, res) {
     try {
-      const passenger = await bookingService().assignPassenger(
+      const passenger = await bookingService.assignPassenger(
         req.params.id,
         req.params.pd,
       );
@@ -108,17 +108,5 @@ const BookingController = () => {
       console.error(err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-  };
-
-  return {
-    getAll,
-    get,
-    update,
-    //create,
-    destroy,
-    createPassenger,
-    assignPassenger,
-  };
-};
-
-export default BookingController;
+  }
+}
